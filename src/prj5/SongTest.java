@@ -9,11 +9,12 @@
  */
 package prj5;
 
+import student.TestCase;
 /**
  * @author khang, jasonh44
  * @version 2018.11.12
  */
-public class SongTest extends student.TestCase {
+public class SongTest extends TestCase {
     private Song song;
     
     /**

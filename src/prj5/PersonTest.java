@@ -22,7 +22,7 @@ public class PersonTest extends TestCase {
      * Setup method
      */
     public void setUp() {
-        person = new Person(10, "1/1/2018", "read", "Computer Science", "Northeast US", int[] {1, 0, 1, null, 1});
+        person = new Person(10, "1/1/2018", "read", "Computer Science", "Northeast US", new int[]{1, 0, 1, -1, 1});
     }
     
     
@@ -93,8 +93,8 @@ public class PersonTest extends TestCase {
             exception instanceof IndexOutOfBoundsException);
         
         assertEquals(1, person.getVote(0));
-        assertEquals(1, person.getVote(1));
-        assertNull(person.getVote(3));
+        assertEquals(0, person.getVote(1));
+        assertEquals(-1, person.getVote(3));
     }
     
 }
