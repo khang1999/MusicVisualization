@@ -3,7 +3,12 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CarranoDataStructuresLib"/>
+<<<<<<< HEAD
 	<classpathentry combineaccessrules="false" kind="src" path="/CS2114-Support"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/GraphWindowLib"/>
+=======
+	<classpathentry combineaccessrules="false" kind="src" path="/CollectionDisplay"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CS2114-Support"/>
+>>>>>>> 315ae3db5f602694c539c9493b7a186bc386dce4
 	<classpathentry kind="output" path="bin"/>
 </classpath>
