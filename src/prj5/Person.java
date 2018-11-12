@@ -9,8 +9,8 @@ package prj5;
 /**
  * Individual information on survey results from students
  * 
- * @author khang
- *
+ * @author khang, jasonh44
+ * @version 2018.12.11
  */
 public class Person {
     private int id;
@@ -18,7 +18,7 @@ public class Person {
     private String hobby;
     private String major;
     private String region;
-    private int votes;
+    private int[] votes;
 
 
     /**
@@ -35,6 +35,7 @@ public class Person {
      *            Region of student residence (Northeast US, Southeast US, the
      *            rest of the US, outside of the US)
      * @param votes
+     *            The integer array containing votes of 0 for no and 1 for yes
      */
     public Person(
         int id,
@@ -42,7 +43,7 @@ public class Person {
         String hobby,
         String major,
         String region,
-        int votes) {
+        int[] votes) {
         this.id = id;
         this.date = date;
         this.hobby = hobby;
@@ -79,6 +80,7 @@ public class Person {
     
     /**
      * Get region of person
+     * @return persons region
      */
     public String getRegion() {
         return region;
@@ -86,16 +88,25 @@ public class Person {
     
     /**
      * Get hobby of person
+     * @return persons hobby
      */
     public String getHobby() {
         return hobby;
     }
     
     /**
-     * Get vote of person
-     * @return true if yes, false if no
+     * Get a specific vote for this person
+     * @param index  the index of the vote to get
+     * @return the vote at the index
+     * @throws IndexOutOfBoundsException
+     *          if the index is out of range
      */
-    public boolean getVote(int votes) {
-        return true;
+    public int getVote(int index) {
+        if (index >= 0 && index < votes.length) {
+            return votes[index];
+        }
+        else {
+            throw new IndexOutOfBoundsException();
+        }
     }
 }

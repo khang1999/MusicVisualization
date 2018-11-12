@@ -17,11 +17,12 @@ import student.TestCase;
  */
 public class PersonTest extends TestCase {
     private Person person;
+    
     /**
      * Setup method
      */
     public void setUp() {
-        person = new Person(10, "1/1/2018", "read", "Computer Science", "Northeast US", 10);
+        person = new Person(10, "1/1/2018", "read", "Computer Science", "Northeast US", int[] {1, 0, 1, null, 1});
     }
     
     
@@ -65,7 +66,35 @@ public class PersonTest extends TestCase {
      * Test getVote() 
      */
     public void testGetVote() {
-        assertTrue(person.getVote(10));
+        Exception exception = null;
+        try {
+            person.getVote(-1);
+            fail("getVote() did not throw an exception when index is less "
+                + "than 0");
+        }
+        catch (Exception e) {
+            exception = e;
+        }
+        assertTrue("getVote() did not throw an IndexOutOfBoundsException when "
+            + "index is less 0",
+            exception instanceof IndexOutOfBoundsException);
+        
+        exception = null;
+        try {
+            person.getVote(5);
+            fail("getVote() did not throw an exception when index is greater "
+                + "than length - 1");
+        }
+        catch (Exception e) {
+            exception = e;
+        }
+        assertTrue("getVote() did not throw an IndexOutOfBoundsException when "
+            + "index is greater than length - 1",
+            exception instanceof IndexOutOfBoundsException);
+        
+        assertEquals(1, person.getVote(0));
+        assertEquals(1, person.getVote(1));
+        assertNull(person.getVote(3));
     }
     
 }
