@@ -8,5 +8,11 @@ package prj5;
  *
  */
 public class Glyph {
-
+    private Window window;
+    private Song song;
+    private double[] majors;
+    private double[] regions;
+    private double[] hobbies;
+    
+    
 }
