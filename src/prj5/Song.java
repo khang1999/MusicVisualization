@@ -11,14 +11,14 @@ package prj5;
 
 /**
  * Song class for Music Data Visualization
- * @author khang
- *
+ * @author khang, jasonh44
+ * @version 2018.11.12
  */
 public class Song {
-    private String title;
-    private String artist;
-    private String genre;
-    private int year;
+    private final String title;
+    private final String artist;
+    private final String genre;
+    private final int year;
     
     /**
      * Constructor

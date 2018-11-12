@@ -10,8 +10,8 @@
 package prj5;
 
 /**
- * @author khang
- *
+ * @author khang, jasonh44
+ * @version 2018.11.12
  */
 public class SongTest extends student.TestCase {
     private Song song;
