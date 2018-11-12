@@ -4,9 +4,6 @@
 // I will not lie, cheat, or steal, nor will I accept the actions of those
 // who do.
 // -- Khang Nguyen (khang) Nathan Kim (nathank) Jason Hassold ()
-/**
- * 
- */
 package prj5;
 
 /**
@@ -433,7 +430,7 @@ public class LinkedList<E> {
         }
         if (this.getClass() == obj.getClass()) {
             @SuppressWarnings("unchecked")
-            SinglyLinkedList<E> other = ((SinglyLinkedList<E>)obj);
+            LinkedList<E> other = ((LinkedList<E>)obj);
             if (other.size() == this.size()) {
                 Node<E> current = head;
                 Node<E> otherCurrent = other.head;
