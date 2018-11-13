@@ -11,7 +11,7 @@ package prj5;
 
 /**
  * Song class for Music Data Visualization
- * @author khang, jasonh44
+ * @author khang, jasonh44, nathank
  * @version 2018.11.12
  */
 public class Song {
