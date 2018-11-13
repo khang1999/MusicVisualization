@@ -3,46 +3,37 @@
 // As a Hokie, I will conduct myself with honor and integrity at all times.
 // I will not lie, cheat, or steal, nor will I accept the actions of those
 // who do.
-// -- Khang Nguyen (khang) Nathan Kim (nathank) Jason Hassold ()
+// -- Khang Nguyen (khang) Nathan Kim (nathank) Jason Hassold (jasonh44)
 package prj5;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
- * Basic implementation of Linked List
- * 
- * @author khang
- * @version 11.12.2018
+ * This is a basic implementation of a linked list
+ *
+ * @author khang, nathank, jasonh44
+ * @version 12.11.2018
  * 
  * @param <E>
  *            This is the type of object that this class will store
- *
  */
 public class LinkedList<E> {
+
     /**
      * This represents a node in a singly linked list. This node stores data
      * along with having a pointer to the next node in the list
      *
      * @param <D>
      *            This is the type of object that this class will store
-     * @author Mark Wiggans (mmw125)
-     * @author Christina Olk (colk)
-     * @author maellis1
-     * @author Jamal Ahmad (jamal93)
-     * @author Margaret Ellis (maellis1)
+     * @author khang, nathank, jasonh44
      * 
-     * @version 4/14/2015
-     * @version 9.4.15
-     * @version 10.29.15
-     * @version 10/15/2016
-     * @version 03/17/2017
+     * @version 12.11.2018
      */
-    public static class Node<D> {
-
-        // The data element stored in the node.
-        private D data;
-
-        // The next node in the sequence.
-        private Node<D> next;
-
+    private static class Node<E> {
+        // Fields
+        private E data;
+        private Node<E> next;
 
         /**
          * Creates a new node with the given data
@@ -50,10 +41,9 @@ public class LinkedList<E> {
          * @param d
          *            the data to put inside the node
          */
-        public Node(D d) {
+        public Node(E d) {
             data = d;
         }
-
 
         /**
          * Sets the node after this node
@@ -61,46 +51,90 @@ public class LinkedList<E> {
          * @param n
          *            the node after this one
          */
-        public void setNext(Node<D> n) {
+        public void setNext(Node<E> n) {
             next = n;
         }
-
 
         /**
          * Gets the next node
          *
          * @return the next node
          */
-        public Node<D> next() {
+        public Node<E> next() {
             return next;
         }
-
 
         /**
          * Gets the data in the node
          *
          * @return the data in the node
          */
-        public D getData() {
+        public E data() {
             return data;
         }
     }
+    
+    /**
+     * Iterator inner class
+     * 
+     * @author jasonh44
+     * @version 12.11.2018
+     */
+    private class LLIterator<A> implements Iterator<E> {
+        // Fields
+        private Node<E> nextNode;
+        
+        /**
+         * Constructor
+         */
+        public LLIterator() {
+            nextNode = firstNode;
+        }
+        
+        /**
+         * Checks if there are more elements in the list
+         *
+         * @return true if there are more elements in the list
+         */
+        @Override
+        public boolean hasNext() {
+            return null != nextNode;         
+        }
+        
+        /**
+         * Gets the next value in the list
+         *
+         * @return the next value
+         * @throws NoSuchElementException
+         *             if there are no nodes left in the list
+         */
+        @Override
+        public E next() {
+            if (hasNext()) {
+                Node<E> returnNode = nextNode;
+                nextNode = nextNode.next();
+                return returnNode.data();
+            }
+            else {
+                throw new NoSuchElementException("Illegal call to next(); " +
+                                              "iterator is after end of list.");
+            }
+        }
+        
+    }
 
-    private Node<E> head;
-
-    // the size of the linked list
+    // Fields
+    private Node<E> firstNode;
     private int size;
-
 
     /**
      * Creates a new LinkedList object
      */
     public LinkedList() {
-        head = null;
+        firstNode = null;
         size = 0;
 
     }
-
 
     /**
      * Gets the number of elements in the list
@@ -110,57 +144,6 @@ public class LinkedList<E> {
     public int size() {
         return size;
     }
-
-
-    /**
-     * Adds the object to the position in the list
-     *
-     * @precondition obj cannot be null
-     * @param index
-     *            where to add the object
-     * @param obj
-     *            the object to add
-     * @throws IndexOutOfBoundsException
-     *             if index is less than zero or greater than size
-     * @throws IllegalArgumentException
-     *             if obj is null
-     */
-    public void add(int index, E obj) {
-        // check if the object is null
-        if (obj == null) {
-            throw new IllegalArgumentException("Object is null");
-        }
-
-        // check if the index is out of bounds
-        if ((index < 0) || (index > size())) {
-            throw new IndexOutOfBoundsException("Index is out of bounds");
-        }
-
-        Node<E> current = head;
-
-        // empty stack case
-        if (isEmpty()) {
-            head = new Node<E>(obj);
-        }
-
-        // all other cases
-        else {
-            int currentIndex = 0;
-            while (current != null) {
-                if ((currentIndex + 1) == index) {
-                    Node<E> nextNext = current.next;
-                    Node<E> newNode = new Node<E>(obj);
-                    current.setNext(newNode);
-                    newNode.setNext(nextNext);
-
-                }
-                current = current.next();
-                currentIndex++;
-            }
-        }
-        size++;
-    }
-
 
     /**
      * Adds the object to the end of the list.
@@ -177,11 +160,11 @@ public class LinkedList<E> {
             throw new IllegalArgumentException("Object is null");
         }
 
-        Node<E> current = head;
+        Node<E> current = firstNode;
 
         // empty stack case
         if (isEmpty()) {
-            head = new Node<E>(obj);
+            firstNode = new Node<E>(obj);
         }
 
         // other cases
@@ -194,7 +177,6 @@ public class LinkedList<E> {
         size++;
     }
 
-
     /**
      * Checks if the array is empty
      *
@@ -204,7 +186,6 @@ public class LinkedList<E> {
         return (size == 0);
     }
 
-
     /**
      * Removes the first instance of the given object from the list
      *
@@ -213,11 +194,11 @@ public class LinkedList<E> {
      * @return true if successful
      */
     public boolean remove(E obj) {
-        Node<E> current = head;
+        Node<E> current = firstNode;
 
-        // account for matching head
-        if ((null != head) && (obj.equals(current.data))) {
-            head = head.next;
+        // account for matching firstNode
+        if ((null != firstNode) && (obj.equals(current.data))) {
+            firstNode = firstNode.next;
             size--;
             return true;
         }
@@ -225,9 +206,7 @@ public class LinkedList<E> {
         // account for 2+ size
         while (size() >= 2 && (current.next != null)) {
             if ((obj.equals(current.next.data))) {
-                if (current.next.next != null) {
-                    current.setNext(current.next.next);
-                }
+                current.setNext(current.next.next);
                 size--;
                 return true;
             }
@@ -237,7 +216,6 @@ public class LinkedList<E> {
         // this accounts for the isEmpty case or the object does not exist
         return false;
     }
-
 
     /**
      * Removes the object at the given position
@@ -250,17 +228,17 @@ public class LinkedList<E> {
      */
     public boolean remove(int index) {
         // // if the index is invalid
-        if (index < 0 || head == null) {
+        if (index < 0 || firstNode == null) {
             throw new IndexOutOfBoundsException("Index is out of bounds");
-        }
+        } 
         else {
 
-            Node<E> current = head;
+            Node<E> current = firstNode;
             int currentIndex = 0;
 
             // account for 1 size
             if ((index == 0)) {
-                head = head.next;
+                firstNode = firstNode.next;
                 size--;
                 return true;
             }
@@ -274,13 +252,13 @@ public class LinkedList<E> {
                     return true;
                 }
                 current = current.next;
+                currentIndex++;
             }
 
             // if the element was never found, this also handles empty case
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
     }
-
 
     /**
      * Gets the object at the given position
@@ -292,7 +270,7 @@ public class LinkedList<E> {
      *             if no node at the given index
      */
     public E get(int index) {
-        Node<E> current = head;
+        Node<E> current = firstNode;
         int currentIndex = 0;
         E data = null;
         while (current != null) {
@@ -311,7 +289,6 @@ public class LinkedList<E> {
         return data;
     }
 
-
     /**
      * Checks if the list contains the given object
      *
@@ -320,7 +297,7 @@ public class LinkedList<E> {
      * @return true if it contains the object
      */
     public boolean contains(E obj) {
-        Node<E> current = head;
+        Node<E> current = firstNode;
         while (current != null) {
             if (obj.equals(current.data)) {
                 return true;
@@ -330,121 +307,24 @@ public class LinkedList<E> {
 
         return false;
     }
-
 
     /**
      * Removes all of the elements from the list
      */
     public void clear() {
         // make sure we don't call clear on an empty list
-        while (head != null) {
-            head.setNext(null);
-            size--;
+        if (firstNode != null) {
+            firstNode = null;
+            size = 0;
         }
-
     }
-
-
+    
     /**
-     * Gets the last time the given object is in the list
-     *
-     * @param obj
-     *            the object to look for
-     * @return the last position of it. -1 If it is not in the list
+     * Creates and returns an LLIterator object
+     * 
+     * @return the LLIterator object
      */
-    public int lastIndexOf(E obj) {
-        int lastIndex = -1;
-        Node<E> current = head;
-        int currentIndex = 0;
-        while (current != null) {
-            if (obj.equals(current.data)) {
-                lastIndex = currentIndex;
-            }
-            currentIndex++;
-            current = current.next;
-
-        }
-        return lastIndex;
-    }
-
-
-    /**
-     * Returns a string representation of the list If a list contains A, B, and
-     * C, the following should be returned "{A, B, C}" (Without the quotations)
-     *
-     * @return a string representing the list
-     */
-    @Override
-    public String toString() {
-        String result = "{";
-
-        Node<E> current = head;
-        while (current != null) {
-            result += "" + current.data;
-            current = current.next;
-            if (current != null) {
-                result += ", ";
-            }
-        }
-        result += "}";
-        return result;
-    }
-
-
-    /**
-     * Returns an array representation of the list If a list contains A, B, and
-     * C, the following should be returned {A, B, C}, If a list
-     * contains A, B, C, and C the following should be returned {A, B, C, C}
-     *
-     * @return an array representing the list
-     */
-    public Object[] toArray() {
-
-        Object[] array = new Object[this.size()];
-
-        Node<E> current = head;
-        int count = 0;
-        while (current != null) {
-            array[count] = current.getData();
-            current = current.next;
-            count++;
-        }
-
-        return array;
-    }
-
-
-    /**
-     * Returns true if both lists have the exact same contents
-     * in the exact same order
-     *
-     * @return a boolean of whether two lists have the same contents,
-     *         item per item and in the same order
-     */
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() == obj.getClass()) {
-            @SuppressWarnings("unchecked")
-            LinkedList<E> other = ((LinkedList<E>)obj);
-            if (other.size() == this.size()) {
-                Node<E> current = head;
-                Node<E> otherCurrent = other.head;
-                while (current != null) {
-                    if (!current.getData().equals(otherCurrent.getData())) {
-                        return false;
-                    }
-                    current = current.next();
-                    otherCurrent = otherCurrent.next();
-                }
-                return true;
-            }
-        }
-
-        return false;
+    public Iterator<E> iterator() {
+        return new LLIterator<E>();
     }
 }
