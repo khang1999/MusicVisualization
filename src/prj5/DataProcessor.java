@@ -88,7 +88,7 @@ public class DataProcessor {
                 String major = line.next();
                 String region = line.next();
                 String hobby = line.next();
-                int[] votes = new int[songs.size()];
+                int[] votes = new int[songs.size() * 2];
                 
                 int index = 0;
                 while (line.hasNext()) {
@@ -142,6 +142,6 @@ public class DataProcessor {
      * Get people linkedlist to test
      */
     public LinkedList<Person> getPeople() {
-        
+        return people;
     }
 }

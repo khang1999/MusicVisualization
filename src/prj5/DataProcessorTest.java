@@ -38,9 +38,14 @@ public class DataProcessorTest extends TestCase {
      */
     public void test() {
         LinkedList<Song> songs = dp.getSongs();
+        LinkedList<Person> people = dp.getPeople();
         
         assertEquals("Hotline Bling", songs.get(0).getTitle());
         assertEquals("Michael Jackson", songs.get(42).getArtist());
         assertEquals(2017, songs.get(54).getYear());
+        
+        assertEquals(1, people.get(9).getVote(7));
+        assertEquals(0, people.get(9).getVote(8));
+        assertEquals(-1, people.get(7).getVote(50));
     }
 }
