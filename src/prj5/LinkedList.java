@@ -18,7 +18,7 @@ import java.util.NoSuchElementException;
  * @param <E>
  *            This is the type of object that this class will store
  */
-public class LinkedList<E> {
+public class LinkedList<E> implements Iterable<E>{
 
     /**
      * This represents a node in a singly linked list. This node stores data
