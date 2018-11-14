@@ -23,10 +23,7 @@ public class SongTest extends TestCase {
      * Sets up
      */
     public void setUp() {
-        song = new Song("Hello", "Khang", "Sad", 1980, 
-            new double[] {0.1, 0.2, 0.3},
-            new double[] {0.4, 0.5, 0.6},
-            new double[] {0.7, 0.8, 0.9});
+        song = new Song("Hello", "Khang", "Sad", 1980);
     }
     
     /**
@@ -61,6 +58,7 @@ public class SongTest extends TestCase {
      * Test hobbyData
      */
     public void testGetHobbyData() {
+        song.setHobbyData(new double[] {0.1, 0.2, 0.3});
         assertTrue(Arrays.equals(new double[] {0.1, 0.2, 0.3}, song.getHobbyData()));
     }
     
@@ -68,6 +66,7 @@ public class SongTest extends TestCase {
      * Test majorData
      */
     public void testGetMajorData() {
+        song.setMajorData(new double[] {0.4, 0.5, 0.6});
         assertTrue(Arrays.equals(new double[] {0.4, 0.5, 0.6}, song.getMajorData()));
     }
     
@@ -75,6 +74,7 @@ public class SongTest extends TestCase {
      * Test regionData
      */
     public void testGetRegionData() {
+        song.setRegionData(new double[] {0.7, 0.8, 0.9});
         assertTrue(Arrays.equals(new double[] {0.7, 0.8, 0.9}, song.getRegionData()));
     }
 }
