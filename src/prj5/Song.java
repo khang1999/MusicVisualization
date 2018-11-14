@@ -19,15 +19,22 @@ public class Song {
     private final String artist;
     private final String genre;
     private final int year;
+    private double[] hobbyData;
+    private double[] majorData;
+    private double[] regionData;
     
     /**
      * Constructor
      */
-    public Song(String t, String a, String g, int y) {
+    public Song(String t, String a, String g, int y,
+        double[] hData, double[] mData, double[] rData) {
         title = t;
         artist = a;
         genre = g;
         year = y;
+        hobbyData =  hData;
+        majorData = mData;
+        regionData = rData;
     }
     
     /**
@@ -63,4 +70,27 @@ public class Song {
         return year;
     }
 
+    /**
+     * Getter for hobby data
+     * @return the data for hobbies
+     */
+    public double[] getHobbyData() {
+        return hobbyData;
+    }
+    
+    /**
+     * Getter for major data
+     * @return the data for major
+     */
+    public double[] getMajorData() {
+        return majorData;
+    }
+    
+    /**
+     * Getter for region data
+     * @return the data for regions
+     */
+    public double[] getRegionData() {
+        return regionData;
+    }
 }

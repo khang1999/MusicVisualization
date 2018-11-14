@@ -10,6 +10,8 @@
 package prj5;
 
 import student.TestCase;
+import java.util.Arrays;
+
 /**
  * @author khang, jasonh44
  * @version 2018.11.12
@@ -21,7 +23,10 @@ public class SongTest extends TestCase {
      * Sets up
      */
     public void setUp() {
-        song = new Song("Hello", "Khang", "Sad", 1980);
+        song = new Song("Hello", "Khang", "Sad", 1980, 
+            new double[] {0.1, 0.2, 0.3},
+            new double[] {0.4, 0.5, 0.6},
+            new double[] {0.7, 0.8, 0.9});
     }
     
     /**
@@ -50,5 +55,26 @@ public class SongTest extends TestCase {
      */
     public void testGetYear() {
         assertEquals(song.getYear(), 1980);
+    }
+    
+    /**
+     * Test hobbyData
+     */
+    public void testGetHobbyData() {
+        assertTrue(Arrays.equals(new double[] {0.1, 0.2, 0.3}, song.getHobbyData()));
+    }
+    
+    /**
+     * Test majorData
+     */
+    public void testGetMajorData() {
+        assertTrue(Arrays.equals(new double[] {0.4, 0.5, 0.6}, song.getMajorData()));
+    }
+    
+    /**
+     * Test regionData
+     */
+    public void testGetRegionData() {
+        assertTrue(Arrays.equals(new double[] {0.7, 0.8, 0.9}, song.getRegionData()));
     }
 }
