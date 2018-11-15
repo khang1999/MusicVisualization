@@ -19,9 +19,9 @@ public class Song {
     private final String artist;
     private final String genre;
     private final int year;
-    private double[] hobbyData;
-    private double[] majorData;
-    private double[] regionData;
+    private double[][] hobbyData;
+    private double[][] majorData;
+    private double[][] regionData;
     
     /**
      * Constructor
@@ -70,7 +70,7 @@ public class Song {
      * Setter for hobby data
      * @param hData  the hobby data
      */
-    public void setHobbyData(double[] hData) {
+    public void setHobbyData(double[][] hData) {
         hobbyData = hData;
     }
     
@@ -78,7 +78,7 @@ public class Song {
      * Getter for hobby data
      * @return the data for hobbies
      */
-    public double[] getHobbyData() {
+    public double[][] getHobbyData() {
         return hobbyData;
     }
     
@@ -86,7 +86,7 @@ public class Song {
      * Setter for major data
      * @param mData  the major data
      */
-    public void setMajorData(double[] mData) {
+    public void setMajorData(double[][] mData) {
         majorData = mData;
     }
     
@@ -94,7 +94,7 @@ public class Song {
      * Getter for major data
      * @return the data for major
      */
-    public double[] getMajorData() {
+    public double[][] getMajorData() {
         return majorData;
     }
     
@@ -102,7 +102,7 @@ public class Song {
      * Setter for region data
      * @param rData  the region data
      */
-    public void setRegionData(double[] rData) {
+    public void setRegionData(double[][] rData) {
         regionData = rData;
     }
     
@@ -110,7 +110,7 @@ public class Song {
      * Getter for region data
      * @return the data for regions
      */
-    public double[] getRegionData() {
+    public double[][] getRegionData() {
         return regionData;
     }
 }
