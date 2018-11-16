@@ -45,7 +45,7 @@ public class Glyph {
     public double[] getHobby() {
         double[] bars = new double[8];
         
-        double[][] hobbyData = song.getHobbyData();
+        int[][] hobbyData = song.getHobbyData();
         //For loop that goes through each element of bar and fills it up
         for (int i = 0; i < 7; i+=2) {
             //Creates two elements at a time, for each subgroup
@@ -63,7 +63,7 @@ public class Glyph {
     public double[] getMajor() {
         double[] bars = new double[8];
         
-        double[][] majorData = song.getMajorData();
+        int[][] majorData = song.getMajorData();
         //For loop that goes through each element of bar and fills it up
         for (int i = 0; i < 7; i+=2) {
             //Creates two elements at a time, for each subgroup
@@ -81,10 +81,9 @@ public class Glyph {
     public double[] getRegion() {
         double[] bars = new double[8];
         
-        double[][] regionData = song.getRegionData();
+        int[][] regionData = song.getRegionData();
         //For loop that goes through each element of bar and fills it up
         for (int i = 0; i < 7; i+=2) {
-            //Creates two elements at a time, for each subgroup
             bars[i] = regionData[(int)(i/2)][0] / regionData[(int)(i/2)][2];
             bars[i + 1] = regionData[(int)(i/2)][1] / regionData[(int)(i/2)][2];
         }
