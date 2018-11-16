@@ -10,6 +10,7 @@ import java.awt.Color;
 import CS2114.Window;
 import CS2114.Button;
 import CS2114.WindowSide;
+import CS2114.Shape;
 
 /**
  * Creates window that displays legend and glyphs
@@ -31,7 +32,8 @@ public class LegendWindow {
     private Button majorButton;
     private Button regionButton;
     private Button quitButton;
-
+    private Shape legend;
+    private Shape outline;
 
     // Constructor
     /**
@@ -70,6 +72,10 @@ public class LegendWindow {
         quitButton = new Button("Quit");
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
+        outline = new Shape(200, 100, 100, 200, Color.BLACK);
+        window.addShape(outline);   
+        legend = new Shape(500, 100, 50, 150, Color.RED);
+        window.addShape(legend);
     }
 
 
