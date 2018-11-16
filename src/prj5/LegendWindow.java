@@ -22,6 +22,7 @@ import CS2114.Shape;
 public class LegendWindow {
     // fields
     private DataProcessor dp;
+    private String represent;
     
     private Window window;
     private Button sortArtist;
@@ -43,6 +44,7 @@ public class LegendWindow {
      */
     public LegendWindow(String surveyDataFile, String musicFile) {
         dp = new DataProcessor(surveyDataFile, musicFile);
+        represent = "";
         
         window = new Window();
         window.setSize(1500, 1000);
@@ -85,6 +87,14 @@ public class LegendWindow {
 
 
     // Method
+    /**
+     * Updates the window
+     */
+    public void update() {
+        
+    }    
+    
+    
     /**
      * Click button that sorts songs by Artist alphabetically
      * 
@@ -158,7 +168,8 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedHobbyButton(Button button) {
-
+        represent = "hobby";
+        update();
     }
 
 
@@ -169,7 +180,8 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedMajorButton(Button button) {
-
+        represent = "major";
+        update();
     }
 
 
@@ -180,7 +192,8 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedRegionButton(Button button) {
-
+        represent = "region";
+        update();
     }
 
 

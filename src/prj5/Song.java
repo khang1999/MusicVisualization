@@ -126,4 +126,24 @@ public class Song {
     public int[][] getRegionData() {
         return regionData;
     }
+    
+    /**
+     * To string
+     * @param represent  data to represent
+     * @return the string representation
+     */
+    @Override 
+    public String toString(String represent) {
+        StringBuilder out = new StringBuilder();
+        out.append("Song Title: " + title + "\n");
+        out.append("Song Artist: " + artist + "\n");
+        out.append("Song Genre: " + genre + "\n");
+        out.append("Song Year: " + year + "\n");
+        switch (represent) {
+            case "hobby":
+                out.append("Heard\n");
+                out.append("reading: ")
+        }
+    }
+    
 }
