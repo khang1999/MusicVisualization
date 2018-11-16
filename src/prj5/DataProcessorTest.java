@@ -30,7 +30,11 @@ public class DataProcessorTest extends TestCase {
      * Set up
      */
     public void setUp() {
-        dp = new DataProcessor();
+        dp = new DataProcessor(
+            "C:\\Users\\Jason\\Documents\\GitHub\\MusicVisualization\\"
+            + "MusicSurveyData2018S.csv",
+            "C:\\Users\\Jason\\Documents\\GitHub\\MusicVisualization\\"
+            + "SongList2018S.csv");
     }
     
     /**

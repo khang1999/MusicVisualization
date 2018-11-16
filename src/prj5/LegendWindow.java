@@ -22,6 +22,8 @@ import CS2114.TextShape;
  */
 public class LegendWindow {
     // fields
+    private DataProcessor dp;
+    
     private Window window;
     private Button sortArtist;
     private Button sortSong;
@@ -49,7 +51,9 @@ public class LegendWindow {
     /**
      * Creates a new LegendWindow
      */
-    public LegendWindow() {
+    public LegendWindow(String surveyDataFile, String musicFile) {
+        dp = new DataProcessor(surveyDataFile, musicFile);
+        
         window = new Window();
         window.setSize(1500, 1000);
         window.setTitle("Project 5");
@@ -119,7 +123,7 @@ public class LegendWindow {
         inside = new Shape((window.getWidth() - 300), (window.getHeight() / 2 - 85), 240, 390, Color.WHITE);
         window.addShape(inside);
         outline = new Shape((window.getWidth() - 305), (window.getHeight() / 2 - 90), 250, 400, Color.BLACK);
-        window.addShape(outline);  
+        window.addShape(outline);
     }
 
 
