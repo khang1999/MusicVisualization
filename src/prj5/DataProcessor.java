@@ -29,9 +29,10 @@ public class DataProcessor {
      * Constructor
      * Loads in data from SongList2018S.csv and MusicSurveyData2018S.csv
      * 
-     * @param w  the window
+     * @param surveyDataFile  file path to the survey data
+     * @param musicFile  file path to the music file
      */
-    public DataProcessor() {
+    public DataProcessor(String surveyDataFile, String musicFile) {
         // Initialize fields
         people = new LinkedList<Person>();
         songs = new LinkedList<Song>();
@@ -39,8 +40,8 @@ public class DataProcessor {
        
         
         // Load in data
-        loadSongs();
-        loadSurveys();
+        loadSongs(musicFile);
+        loadSurveys(surveyDataFile);
         
     }
     
@@ -48,13 +49,11 @@ public class DataProcessor {
     /**
      * Loads in the songs
      */
-    private void loadSongs() {
+    private void loadSongs(String musicFile) {
      // Load file into scanner
         Scanner songFile = null;
         try {
-            songFile = new Scanner(new File(
-                "C:\\Users\\Jason\\Documents\\GitHub\\MusicVisualization\\"
-                + "SongList2018S.csv"));
+            songFile = new Scanner(new File(musicFile));
             
             // Loop through by line
             songFile.nextLine(); // Skips information line
@@ -79,13 +78,11 @@ public class DataProcessor {
     /**
      * Load in the survey data
      */
-    private void loadSurveys() {
+    private void loadSurveys(String surveyDataFile) {
         // Load file into scanner
         Scanner surveyFile = null;
         try {
-            surveyFile = new Scanner(new File(
-                "C:\\Users\\Jason\\Documents\\GitHub\\MusicVisualization\\"
-                + "MusicSurveyData2018S.csv"));
+            surveyFile = new Scanner(new File(surveyDataFile));
             
             // Loop through by line
             surveyFile.nextLine(); // Skips information line

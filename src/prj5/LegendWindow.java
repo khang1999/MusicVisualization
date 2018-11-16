@@ -21,6 +21,8 @@ import CS2114.Shape;
  */
 public class LegendWindow {
     // fields
+    private DataProcessor dp;
+    
     private Window window;
     private Button sortArtist;
     private Button sortSong;
@@ -39,7 +41,9 @@ public class LegendWindow {
     /**
      * Creates a new LegendWindow
      */
-    public LegendWindow() {
+    public LegendWindow(String surveyDataFile, String musicFile) {
+        dp = new DataProcessor(surveyDataFile, musicFile);
+        
         window = new Window();
         window.setTitle("Project 5");
         prevButton = new Button("<-- Prev");
@@ -72,10 +76,14 @@ public class LegendWindow {
         quitButton = new Button("Quit");
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
+        
+        legend = new Shape(200, 100, 50, 150, Color.RED);
+        window.addShape(legend);
         outline = new Shape(200, 100, 100, 200, Color.BLACK);
         window.addShape(outline);   
-        legend = new Shape(500, 100, 50, 150, Color.RED);
-        window.addShape(legend);
+        
+        
+        window.repaint();
     }
 
 

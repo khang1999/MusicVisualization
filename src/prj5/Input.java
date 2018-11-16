@@ -24,6 +24,6 @@ public class Input {
      * Main Method
      */
     public static void main(String[] args) {
-        LegendWindow wind = new LegendWindow();
+        LegendWindow wind = new LegendWindow(args[0], args[1]);
     }
 }
