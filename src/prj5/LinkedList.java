@@ -72,6 +72,14 @@ public class LinkedList<E> implements Iterable<E>{
         public E data() {
             return data;
         }
+        
+        /**
+         * Sets the new data
+         * @param newData
+         */
+        public void setData(E newData) {
+            data = newData;
+        }
     }
     
     /**
@@ -121,6 +129,8 @@ public class LinkedList<E> implements Iterable<E>{
             }
         }
         
+        
+        
     }
 
     // Fields
@@ -133,7 +143,6 @@ public class LinkedList<E> implements Iterable<E>{
     public LinkedList() {
         firstNode = null;
         size = 0;
-
     }
 
     /**
@@ -326,5 +335,41 @@ public class LinkedList<E> implements Iterable<E>{
      */
     public Iterator<E> iterator() {
         return new LLIterator<E>();
+    }
+    
+    /**
+     * returns next node
+     * @return next node
+     */
+    public Node<E> nextNode() {
+        return firstNode.next();
+    }
+    
+    /**
+     * returns this node
+     * @return this node
+     */
+    public Node<E> thisNode() {
+        return firstNode;
+    }
+    
+    /**
+     * Swaps two nodes
+     * @param newNode node to swap
+     */
+    public void swap(Node<E> fNode, Node<E> newNode) {
+        Node<E> temp = new Node<E>(fNode.data());
+        fNode.setData(newNode.data());
+        newNode.setData(temp.data());
+        
+    }
+    
+    public Node<E> getNode(int index) {
+        Node<E> returnNode = firstNode;
+        for (int i = 0; i < index; i++) {
+            returnNode = firstNode.next();
+        }
+        
+        return returnNode;
     }
 }

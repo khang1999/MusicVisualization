@@ -144,12 +144,12 @@ public class Song {
                 out.append("reading:" + hobbyData[2][0] + " " +
                            "art:" + hobbyData[0][0] + " " +
                            "sports:" + hobbyData[3][0] + " " +
-                           "music:" + hobbyData[1][0] + " \n");
+                           "music:" + hobbyData[1][0] + "\n");
                 out.append("Likes\n");
                 out.append("reading:" + hobbyData[2][1] + " " +
                            "art:" + hobbyData[0][1] + " " +
                            "sports:" + hobbyData[3][1] + " " +
-                           "music:" + hobbyData[1][1] + " \n");
+                           "music:" + hobbyData[1][1] + "\n");
         }
         
         return out.toString();
