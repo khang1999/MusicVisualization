@@ -24,7 +24,7 @@ public class LegendWindow {
     // fields
     private DataProcessor dp;
     private String represent;
-    
+
     private Window window;
     private Button sortArtist;
     private Button sortSong;
@@ -47,15 +47,16 @@ public class LegendWindow {
     private TextShape heard;
     private TextShape likes;
     private Shape line;
-    
+
     // manually inserting glpyh
     private TextShape cali;
-    private Shape blue; 
+    private Shape blue;
     private Shape green;
     private Shape red;
     private Shape yellow;
     private Shape black;
-    
+
+
     // Constructor
     /**
      * Creates a new LegendWindow
@@ -63,7 +64,7 @@ public class LegendWindow {
     public LegendWindow(String surveyDataFile, String musicFile) {
         dp = new DataProcessor(surveyDataFile, musicFile);
         represent = "";
-        
+
         window = new Window();
         window.setSize(1500, 1000);
         window.setTitle("Project 5");
@@ -130,7 +131,8 @@ public class LegendWindow {
         window.addShape(likes);
         line = new Shape(1300, 640, 10, 100, Color.BLACK);
         window.addShape(line);
-        cali = new TextShape(30, 50, "Hotel California by The Eagles", Color.BLACK);
+        cali = new TextShape(30, 50, "Hotel California by The Eagles",
+            Color.BLACK);
         cali.setBackgroundColor(Color.WHITE);
         window.addShape(cali);
         black = new Shape(125, 70, 7, 60, Color.BLACK);
@@ -143,10 +145,12 @@ public class LegendWindow {
         window.addShape(red);
         yellow = new Shape(50, 115, 150, 15, Color.YELLOW);
         window.addShape(yellow);
-        
-        inside = new Shape((window.getWidth() - 300), (window.getHeight() / 2 - 85), 240, 390, Color.WHITE);
+
+        inside = new Shape((window.getWidth() - 300), (window.getHeight() / 2
+            - 85), 240, 390, Color.WHITE);
         window.addShape(inside);
-        outline = new Shape((window.getWidth() - 305), (window.getHeight() / 2 - 90), 250, 400, Color.BLACK);
+        outline = new Shape((window.getWidth() - 305), (window.getHeight() / 2
+            - 90), 250, 400, Color.BLACK);
         window.addShape(outline);
     }
 
@@ -160,11 +164,11 @@ public class LegendWindow {
         for (Song song : dp.getSongs()) {
             out.append(song.toString(represent) + "\n");
         }
-        
+
         System.out.print(out.toString());
-    }    
-    
-    
+    }
+
+
     /**
      * Click button that sorts songs by Artist alphabetically
      * 
@@ -174,12 +178,12 @@ public class LegendWindow {
     public void clickedSortArtist(Button button) {
         LinkedList<Song> list = dp.getSongs();
         int index = 0;
-        
+
         while (dp.getSongs().get(index) != null) {
             String artist = list.get(index).getArtist();
-            
+
             int nextIndex = index + 1;
-            
+
             while (list.get(nextIndex) != null) {
                 String nextArtist = list.get(nextIndex).getArtist();
                 if (artist.compareTo(nextArtist) > 1) {
@@ -202,12 +206,12 @@ public class LegendWindow {
     public void clickedSortSong(Button button) {
         LinkedList<Song> list = dp.getSongs();
         int index = 0;
-        
+
         while (dp.getSongs().get(index) != null) {
             String title = list.get(index).getTitle();
-            
+
             int nextIndex = index + 1;
-            
+
             while (list.get(nextIndex) != null) {
                 String nextTitle = list.get(nextIndex).getTitle();
                 if (title.compareTo(nextTitle) > 1) {
@@ -230,12 +234,12 @@ public class LegendWindow {
     public void clickedSortGenre(Button button) {
         LinkedList<Song> list = dp.getSongs();
         int index = 0;
-        
+
         while (dp.getSongs().get(index) != null) {
             String artist = list.get(index).getArtist();
-            
+
             int nextIndex = index + 1;
-            
+
             while (list.get(nextIndex) != null) {
                 String nextArtist = list.get(nextIndex).getArtist();
                 if (artist.compareTo(nextArtist) > 1) {
@@ -258,12 +262,12 @@ public class LegendWindow {
     public void clickedSortYear(Button button) {
         LinkedList<Song> list = dp.getSongs();
         int index = 0;
-        
+
         while (dp.getSongs().get(index) != null) {
             String artist = list.get(index).getArtist();
-            
+
             int nextIndex = index + 1;
-            
+
             while (list.get(nextIndex) != null) {
                 String nextArtist = list.get(nextIndex).getArtist();
                 if (artist.compareTo(nextArtist) > 1) {
@@ -307,7 +311,7 @@ public class LegendWindow {
      */
     public void clickedHobbyButton(Button button) {
         represent = "hobby";
-        //update();
+        // update();
     }
 
 
@@ -319,7 +323,7 @@ public class LegendWindow {
      */
     public void clickedMajorButton(Button button) {
         represent = "major";
-        //update();
+        // update();
     }
 
 
@@ -331,7 +335,7 @@ public class LegendWindow {
      */
     public void clickedRegionButton(Button button) {
         represent = "region";
-        //update();
+        // update();
     }
 
 
