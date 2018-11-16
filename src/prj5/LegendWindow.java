@@ -45,6 +45,7 @@ public class LegendWindow {
         dp = new DataProcessor(surveyDataFile, musicFile);
         
         window = new Window();
+        window.setSize(1500, 1000);
         window.setTitle("Project 5");
         prevButton = new Button("<-- Prev");
         prevButton.onClick(this, "clickedPrevButton");
@@ -76,14 +77,10 @@ public class LegendWindow {
         quitButton = new Button("Quit");
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
-        
-        legend = new Shape(200, 100, 50, 150, Color.RED);
+        legend = new Shape(525, 125, 50, 150, Color.RED);
         window.addShape(legend);
-        outline = new Shape(200, 100, 100, 200, Color.BLACK);
-        window.addShape(outline);   
-        
-        
-        window.repaint();
+        outline = new Shape(500, 100, 100, 200, Color.BLACK);
+        window.addShape(outline);
     }
 
 
