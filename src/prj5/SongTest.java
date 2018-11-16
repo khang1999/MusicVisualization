@@ -58,23 +58,23 @@ public class SongTest extends TestCase {
      * Test hobbyData
      */
     public void testGetHobbyData() {
-        song.setHobbyData(new double[][] {{0.1}, {0.2}, {0.3}});
-        assertTrue(Arrays.equals(new double[][] {{0.1}, {0.2}, {0.3}}, song.getHobbyData()));
+        song.setHobbyData(new int[][] {{1}, {2}, {3}});
+        assertTrue(Arrays.deepEquals(new int[][] {{1}, {2}, {3}}, song.getHobbyData()));
     }
     
     /**
      * Test majorData
      */
     public void testGetMajorData() {
-        song.setMajorData(new double[][] {{0.1}, {0.2}, {0.3}});
-        assertTrue(Arrays.equals(new double[][] {{0.1}, {0.2}, {0.3}}, song.getMajorData()));
+        song.setMajorData(new int[][] {{1}, {2}, {3}});
+        assertTrue(Arrays.deepEquals(new int[][] {{1}, {2}, {3}}, song.getMajorData()));
     }
     
     /**
      * Test regionData
      */
     public void testGetRegionData() {
-        song.setRegionData(new double[][] {{0.1}, {0.2}, {0.3}});
-        assertTrue(Arrays.equals(new double[][] {{0.1}, {0.2}, {0.3}}, song.getRegionData()));
+        song.setRegionData(new int[][] {{1}, {2}, {3}});
+        assertTrue(Arrays.deepEquals(new int[][] {{1}, {2}, {3}}, song.getRegionData()));
     }
 }
