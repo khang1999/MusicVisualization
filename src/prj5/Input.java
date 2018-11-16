@@ -6,6 +6,8 @@
 // -- Khang Nguyen (khang) Nathan Kim (nathank) Jason Hassold (jasonh44)
 package prj5;
 
+import CS2114.Button;
+
 /**
  * Displays the functionality of LegendWindow 
  * @author Nathan Kim, Khang Nguyen, Jason Hassold
@@ -25,5 +27,7 @@ public class Input {
      */
     public static void main(String[] args) {
         LegendWindow wind = new LegendWindow(args[0], args[1]);
+        wind.clickedHobbyButton(new Button());
+        wind.clickedSortSong(new Button());
     }
 }

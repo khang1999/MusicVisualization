@@ -181,7 +181,7 @@ public class LegendWindow {
         LinkedList<Song> list = dp.getSongs();
         int index = 0;
         
-        while (dp.getSongs().get(index) != null) {
+        while (dp.getSongs().get(index + 1) != null) {
             String title = list.get(index).getTitle();
             
             int nextIndex = index + 1;
