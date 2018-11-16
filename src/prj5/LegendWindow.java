@@ -150,7 +150,23 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedSortArtist(Button button) {
-
+        LinkedList<Song> list = dp.getSongs();
+        int index = 0;
+        
+        while (dp.getSongs().get(index) != null) {
+            String artist = list.get(index).getArtist();
+            
+            int nextIndex = index + 1;
+            
+            while (list.get(nextIndex) != null) {
+                String nextArtist = list.get(nextIndex).getArtist();
+                if (artist.compareTo(nextArtist) > 1) {
+                    list.swap(list.getNode(index), list.getNode(nextIndex));
+                }
+                nextIndex++;
+            }
+            index++;
+        }
     }
 
 
@@ -161,7 +177,23 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedSortSong(Button button) {
-
+        LinkedList<Song> list = dp.getSongs();
+        int index = 0;
+        
+        while (dp.getSongs().get(index) != null) {
+            String title = list.get(index).getTitle();
+            
+            int nextIndex = index + 1;
+            
+            while (list.get(nextIndex) != null) {
+                String nextTitle = list.get(nextIndex).getTitle();
+                if (title.compareTo(nextTitle) > 1) {
+                    list.swap(list.getNode(index), list.getNode(nextIndex));
+                }
+                nextIndex++;
+            }
+            index++;
+        }
     }
 
 
@@ -172,7 +204,23 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedSortGenre(Button button) {
-
+        LinkedList<Song> list = dp.getSongs();
+        int index = 0;
+        
+        while (dp.getSongs().get(index) != null) {
+            String artist = list.get(index).getArtist();
+            
+            int nextIndex = index + 1;
+            
+            while (list.get(nextIndex) != null) {
+                String nextArtist = list.get(nextIndex).getArtist();
+                if (artist.compareTo(nextArtist) > 1) {
+                    list.swap(list.getNode(index), list.getNode(nextIndex));
+                }
+                nextIndex++;
+            }
+            index++;
+        }
     }
 
 
@@ -183,7 +231,23 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedSortYear(Button button) {
-
+        LinkedList<Song> list = dp.getSongs();
+        int index = 0;
+        
+        while (dp.getSongs().get(index) != null) {
+            String artist = list.get(index).getArtist();
+            
+            int nextIndex = index + 1;
+            
+            while (list.get(nextIndex) != null) {
+                String nextArtist = list.get(nextIndex).getArtist();
+                if (artist.compareTo(nextArtist) > 1) {
+                    list.swap(list.getNode(index), list.getNode(nextIndex));
+                }
+                nextIndex++;
+            }
+            index++;
+        }
     }
 
 
