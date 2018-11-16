@@ -20,10 +20,10 @@ import java.io.FileNotFoundException;
  */
 public class DataProcessor {
     // Fields
-    private Window window;
     private LinkedList<Person> people;
     private LinkedList<Song> songs;
     private LinkedList<Glyph> glyphs;
+    
     
     /**
      * Constructor
@@ -31,17 +31,25 @@ public class DataProcessor {
      * 
      * @param w  the window
      */
-    public DataProcessor(Window w) {
+    public DataProcessor() {
         // Initialize fields
-        window = w;
         people = new LinkedList<Person>();
         songs = new LinkedList<Song>();
         glyphs = new LinkedList<Glyph>();
        
         
-        // LOAD SONGS
-       
-        // Load file into scanner
+        // Load in data
+        loadSongs();
+        loadSurveys();
+        
+    }
+    
+    
+    /**
+     * Loads in the songs
+     */
+    private void loadSongs() {
+     // Load file into scanner
         Scanner songFile = null;
         try {
             songFile = new Scanner(new File(
@@ -65,11 +73,13 @@ public class DataProcessor {
         catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
-        
-        // LOAD POEPLE
-        
+    }
+    
+    
+    /**
+     * Load in the survey data
+     */
+    private void loadSurveys() {
         // Load file into scanner
         Scanner surveyFile = null;
         try {
@@ -111,25 +121,8 @@ public class DataProcessor {
         catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
     
-    /**
-     * Generates the glyphs
-     */
-    public void generateGlyphs() {
-        
-    }
-    
-    /**
-     * Calculates votes based on index of song
-     * @param s song to check for
-     * @return song index and votes
-     */
-    public double[][] calculateVotes(Song s){
-        return null;
-        //run through each people at a specific vote
-    }
     
     /**
      * Get songs linkedlist to test
@@ -138,10 +131,93 @@ public class DataProcessor {
         return songs;
     }
     
+    
     /**
      * Get people linkedlist to test
      */
     public LinkedList<Person> getPeople() {
         return people;
     }
+    
+    
+    /**
+     * Calculates votes 
+     */
+    public void calculateVotes() {
+        for (Person person : people) {
+            int hobby = subgroupIndex(person.getHobby());
+            int major = subgroupIndex(person.getMajor());
+            int region = subgroupIndex(person.getRegion());
+            
+            for (int songPos = 0; songPos < songs.size(); songPos++) {
+                Song song = songs.get(songPos);
+                
+                if (hobby != -1 && person.getVote(songPos * 2) != -1 && 
+                                   person.getVote(songPos * 2 + 1) != -1) {
+                    int[][] hobbyData = song.getHobbyData();
+                    hobbyData[hobby][0] += person.getVote(songPos * 2);
+                    hobbyData[hobby][1] += person.getVote(songPos * 2 + 1);
+                    hobbyData[hobby][2]++;
+                    
+                    song.setHobbyData(hobbyData);
+                }
+                
+                if (major != -1 && person.getVote(songPos * 2) != -1 && 
+                                   person.getVote(songPos * 2 + 1) != -1) {
+                    int[][] majorData = song.getMajorData();
+                    majorData[major][0] += person.getVote(songPos * 2);
+                    majorData[major][1] += person.getVote(songPos * 2 + 1);
+                    majorData[major][2]++;
+                     
+                    song.setMajorData(majorData);
+                }
+                
+                if (region != -1 && person.getVote(songPos * 2) != -1 && 
+                                   person.getVote(songPos * 2 + 1) != -1) {
+                    int[][] regionData = song.getRegionData();
+                    regionData[region][0] += person.getVote(songPos * 2);
+                    regionData[region][1] += person.getVote(songPos * 2 + 1);
+                    regionData[region][2]++;
+      
+                    song.setRegionData(regionData);
+                }
+            }
+        }
+    }
+    
+    /**
+     * Gets index position of category subgroup
+     *   example category: hobby
+     *   example subgroup: music
+     * 
+     * @param subgroup  the subgroup of a category
+     * @return the index position of the subgroup for the Song data feild array
+     */
+    private int subgroupIndex(String subgroup) {
+        if (subgroup.equals("art") || 
+            subgroup.equals("Computer Science") ||
+            subgroup.equals("Northeast")) {
+            return 0;
+        }
+        else if (subgroup.equals("music") ||
+                 subgroup.equals("Math or CMDA") ||
+                 subgroup.equals("Outside of United States")) {
+            return 1;
+        }
+        else if (subgroup.equals("reading") ||
+                 subgroup.equals("Other Engineering") ||
+                 subgroup.equals("Southeast")) {
+            return 2;
+        }
+        else if (subgroup.equals("sports") ||
+            subgroup.equals("Other") ||
+            subgroup.equals("United States (other than Southeast or Northwest)")
+            ) {
+            return 3;
+        }
+        else {
+            return -1;
+        }
+    }
+    
 }
