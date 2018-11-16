@@ -41,6 +41,7 @@ public class LegendWindow {
      */
     public LegendWindow() {
         window = new Window();
+        window.setSize(1500, 1000);
         window.setTitle("Project 5");
         prevButton = new Button("<-- Prev");
         prevButton.onClick(this, "clickedPrevButton");
@@ -72,10 +73,10 @@ public class LegendWindow {
         quitButton = new Button("Quit");
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
-        outline = new Shape(200, 100, 100, 200, Color.BLACK);
-        window.addShape(outline);   
-        legend = new Shape(500, 100, 50, 150, Color.RED);
+        legend = new Shape(525, 125, 50, 150, Color.RED);
         window.addShape(legend);
+        outline = new Shape(500, 100, 100, 200, Color.BLACK);
+        window.addShape(outline);   
     }
 
 
