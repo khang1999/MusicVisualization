@@ -48,6 +48,14 @@ public class LegendWindow {
     private TextShape likes;
     private Shape line;
     
+    // manually inserting glpyh
+    private TextShape cali;
+    private Shape blue; 
+    private Shape green;
+    private Shape red;
+    private Shape yellow;
+    private Shape black;
+    
     // Constructor
     /**
      * Creates a new LegendWindow
@@ -122,6 +130,20 @@ public class LegendWindow {
         window.addShape(likes);
         line = new Shape(1300, 640, 10, 100, Color.BLACK);
         window.addShape(line);
+        cali = new TextShape(30, 50, "Hotel California by The Eagles", Color.BLACK);
+        cali.setBackgroundColor(Color.WHITE);
+        window.addShape(cali);
+        black = new Shape(125, 70, 7, 60, Color.BLACK);
+        window.addShape(black);
+        blue = new Shape(50, 70, 150, 15, Color.BLUE);
+        window.addShape(blue);
+        green = new Shape(50, 85, 150, 15, Color.GREEN);
+        window.addShape(green);
+        red = new Shape(50, 100, 150, 15, Color.RED);
+        window.addShape(red);
+        yellow = new Shape(50, 115, 150, 15, Color.YELLOW);
+        window.addShape(yellow);
+        
         inside = new Shape((window.getWidth() - 300), (window.getHeight() / 2 - 85), 240, 390, Color.WHITE);
         window.addShape(inside);
         outline = new Shape((window.getWidth() - 305), (window.getHeight() / 2 - 90), 250, 400, Color.BLACK);
