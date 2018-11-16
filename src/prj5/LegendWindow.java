@@ -212,7 +212,7 @@ public class LegendWindow {
      */
     public void clickedHobbyButton(Button button) {
         represent = "hobby";
-        update();
+        //update();
     }
 
 
@@ -224,7 +224,7 @@ public class LegendWindow {
      */
     public void clickedMajorButton(Button button) {
         represent = "major";
-        update();
+        //update();
     }
 
 
@@ -236,7 +236,7 @@ public class LegendWindow {
      */
     public void clickedRegionButton(Button button) {
         represent = "region";
-        update();
+        //update();
     }
 
 

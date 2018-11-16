@@ -132,7 +132,6 @@ public class Song {
      * @param represent  data to represent
      * @return the string representation
      */
-    @Override 
     public String toString(String represent) {
         StringBuilder out = new StringBuilder();
         out.append("Song Title: " + title + "\n");
@@ -142,8 +141,18 @@ public class Song {
         switch (represent) {
             case "hobby":
                 out.append("Heard\n");
-                out.append("reading: ")
+                out.append("reading:" + hobbyData[2][0] + " " +
+                           "art:" + hobbyData[0][0] + " " +
+                           "sports:" + hobbyData[3][0] + " " +
+                           "music:" + hobbyData[1][0] + " \n");
+                out.append("Likes\n");
+                out.append("reading:" + hobbyData[2][1] + " " +
+                           "art:" + hobbyData[0][1] + " " +
+                           "sports:" + hobbyData[3][1] + " " +
+                           "music:" + hobbyData[1][1] + " \n");
         }
+        
+        return out.toString();
     }
     
 }
