@@ -167,6 +167,7 @@ public class LegendWindow {
             }
             index++;
         }
+        update();
     }
 
 
@@ -194,6 +195,7 @@ public class LegendWindow {
             }
             index++;
         }
+        update();
     }
 
 
@@ -221,6 +223,7 @@ public class LegendWindow {
             }
             index++;
         }
+        update();
     }
 
 
@@ -248,6 +251,7 @@ public class LegendWindow {
             }
             index++;
         }
+        update();
     }
 
 
