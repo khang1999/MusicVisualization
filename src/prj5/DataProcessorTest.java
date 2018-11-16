@@ -30,13 +30,13 @@ public class DataProcessorTest extends TestCase {
      * Set up
      */
     public void setUp() {
-        dp = new DataProcessor(new Window());
+        dp = new DataProcessor();
     }
     
     /**
-     * Test
+     * Test for the two data loading methods
      */
-    public void test() {
+    public void testLoadData() {
         LinkedList<Song> songs = dp.getSongs();
         LinkedList<Person> people = dp.getPeople();
         
@@ -47,5 +47,14 @@ public class DataProcessorTest extends TestCase {
         assertEquals(1, people.get(9).getVote(7));
         assertEquals(0, people.get(9).getVote(8));
         assertEquals(-1, people.get(7).getVote(50));
+    }
+    
+    /**
+     * Test calculate votes
+     */
+    public void testCalculateVotes() {
+        dp.calculateVotes();
+        
+        assertTrue(dp.getSongs().get(54).getMajorData()[2][2] != 0);
     }
 }
