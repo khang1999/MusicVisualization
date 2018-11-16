@@ -11,6 +11,7 @@ import CS2114.Window;
 import CS2114.Button;
 import CS2114.WindowSide;
 import CS2114.Shape;
+import CS2114.TextShape;
 
 /**
  * Creates window that displays legend and glyphs
@@ -35,9 +36,18 @@ public class LegendWindow {
     private Button majorButton;
     private Button regionButton;
     private Button quitButton;
-    private Shape legend;
+    private Shape inside;
     private Shape outline;
-
+    private TextShape hobby;
+    private TextShape art;
+    private TextShape music;
+    private TextShape read;
+    private TextShape sports;
+    private TextShape songTitle;
+    private TextShape heard;
+    private TextShape likes;
+    private Shape line;
+    
     // Constructor
     /**
      * Creates a new LegendWindow
@@ -79,9 +89,42 @@ public class LegendWindow {
         quitButton = new Button("Quit");
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
-        legend = new Shape(525, 125, 50, 150, Color.RED);
-        window.addShape(legend);
-        outline = new Shape(500, 100, 100, 200, Color.BLACK);
+        hobby = new TextShape(1275, 430, "Hobby Legend", Color.BLACK);
+        hobby.setBackgroundColor(Color.WHITE);
+        window.addShape(hobby);
+        art = new TextShape(1275, 500, "Art", Color.BLACK);
+        art.setBackgroundColor(Color.WHITE);
+        art.setForegroundColor(Color.BLUE);
+        window.addShape(art);
+        music = new TextShape(1275, 520, "Music", Color.BLACK);
+        music.setBackgroundColor(Color.WHITE);
+        music.setForegroundColor(Color.GREEN);
+        window.addShape(music);
+        read = new TextShape(1275, 540, "Read", Color.BLACK);
+        read.setBackgroundColor(Color.WHITE);
+        read.setForegroundColor(Color.RED);
+        window.addShape(read);
+        sports = new TextShape(1275, 560, "Sports", Color.BLACK);
+        sports.setBackgroundColor(Color.WHITE);
+        sports.setForegroundColor(Color.YELLOW);
+        window.addShape(sports);
+        songTitle = new TextShape(1275, 600, "Song Title", Color.BLACK);
+        songTitle.setBackgroundColor(Color.WHITE);
+        songTitle.setForegroundColor(Color.BLACK);
+        window.addShape(songTitle);
+        heard = new TextShape(1225, 680, "Heard", Color.BLACK);
+        heard.setBackgroundColor(Color.WHITE);
+        heard.setForegroundColor(Color.BLACK);
+        window.addShape(heard);
+        likes = new TextShape(1350, 680, "Likes", Color.BLACK);
+        likes.setBackgroundColor(Color.WHITE);
+        likes.setForegroundColor(Color.BLACK);
+        window.addShape(likes);
+        line = new Shape(1300, 640, 10, 100, Color.BLACK);
+        window.addShape(line);
+        inside = new Shape((window.getWidth() - 300), (window.getHeight() / 2 - 85), 240, 390, Color.WHITE);
+        window.addShape(inside);
+        outline = new Shape((window.getWidth() - 305), (window.getHeight() / 2 - 90), 250, 400, Color.BLACK);
         window.addShape(outline);
     }
 
