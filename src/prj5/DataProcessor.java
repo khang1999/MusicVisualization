@@ -141,14 +141,6 @@ public class DataProcessor {
     
     
     /**
-     * Generates the glyphs
-     */
-    public void generateGlyphs() {
-        
-    }
-    
-    
-    /**
      * Calculates votes 
      */
     public void calculateVotes() {
