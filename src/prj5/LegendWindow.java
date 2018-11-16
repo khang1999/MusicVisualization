@@ -134,7 +134,12 @@ public class LegendWindow {
      * Updates the window
      */
     public void update() {
+        StringBuilder out = new StringBuilder();
+        for (Song song : dp.getSongs()) {
+            out.append(song.toString(represent) + "\n");
+        }
         
+        System.out.print(out.toString());
     }    
     
     
