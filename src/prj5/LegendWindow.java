@@ -247,7 +247,7 @@ public class LegendWindow {
          * Y - string.length();
          */
         switch (represent) {
-            //int num = 0;
+            
             case "major":
                 for(int i = 0; i < placements.length; i++) {
                     //String song = glyphs[num].getTitle();
@@ -263,6 +263,7 @@ public class LegendWindow {
                 break;
             
         }
+    
     }
     
     private int center(int num, int length) {
