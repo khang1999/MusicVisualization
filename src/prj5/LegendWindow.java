@@ -26,6 +26,7 @@ public class LegendWindow {
     private String represent;
     private Song[] songs;
     private Glyph[] glyphs;
+    private int set;
 
     private Window window;
     private Button sortArtist;
@@ -67,6 +68,7 @@ public class LegendWindow {
         dp = new DataProcessor(surveyDataFile, musicFile);
         represent = "";
         glyphs = new Glyph[9];
+        set = 0;
         
         window = new Window();
         window.setSize(1500, 1000);
@@ -232,6 +234,12 @@ public class LegendWindow {
         songs = dp.sort(Song.BY_YEAR);
         update();
     }
+    
+    public void populateGlyph() {
+        for(int i = 0; i < 9; i++) {
+            glyphs[i] = new Glyph(songs[set + i]);
+        }
+    }
 
 
     /**
@@ -241,7 +249,7 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedPrevButton(Button button) {
-
+        set -= 9;
     }
 
 
@@ -252,7 +260,7 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedNextButton(Button button) {
-        
+        set += 9;
     }
 
 
