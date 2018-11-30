@@ -14,11 +14,11 @@ import java.util.NoSuchElementException;
  *
  * @author khang, nathank, jasonh44
  * @version 12.11.2018
- * 
+ *
  * @param <E>
  *            This is the type of object that this class will store
  */
-public class LinkedList<E> implements Iterable<E>{
+public class LinkedList<E> implements Iterable<E> {
 
     /**
      * This represents a node in a singly linked list. This node stores data
@@ -27,13 +27,14 @@ public class LinkedList<E> implements Iterable<E>{
      * @param <D>
      *            This is the type of object that this class will store
      * @author khang, nathank, jasonh44
-     * 
+     *
      * @version 12.11.2018
      */
     private static class Node<E> {
         // Fields
         private E data;
         private Node<E> next;
+
 
         /**
          * Creates a new node with the given data
@@ -45,6 +46,7 @@ public class LinkedList<E> implements Iterable<E>{
             data = d;
         }
 
+
         /**
          * Sets the node after this node
          *
@@ -55,6 +57,7 @@ public class LinkedList<E> implements Iterable<E>{
             next = n;
         }
 
+
         /**
          * Gets the next node
          *
@@ -64,6 +67,7 @@ public class LinkedList<E> implements Iterable<E>{
             return next;
         }
 
+
         /**
          * Gets the data in the node
          *
@@ -72,33 +76,38 @@ public class LinkedList<E> implements Iterable<E>{
         public E data() {
             return data;
         }
-        
+
+
         /**
          * Sets the new data
+         *
          * @param newData
          */
         public void setData(E newData) {
             data = newData;
         }
     }
-    
+
+
     /**
      * Iterator inner class
-     * 
+     *
      * @author jasonh44
      * @version 12.11.2018
      */
     private class LLIterator<A> implements Iterator<E> {
         // Fields
         private Node<E> nextNode;
-        
+
+
         /**
          * Constructor
          */
         public LLIterator() {
             nextNode = firstNode;
         }
-        
+
+
         /**
          * Checks if there are more elements in the list
          *
@@ -106,9 +115,10 @@ public class LinkedList<E> implements Iterable<E>{
          */
         @Override
         public boolean hasNext() {
-            return null != nextNode;         
+            return null != nextNode;
         }
-        
+
+
         /**
          * Gets the next value in the list
          *
@@ -124,18 +134,17 @@ public class LinkedList<E> implements Iterable<E>{
                 return returnNode.data();
             }
             else {
-                throw new NoSuchElementException("Illegal call to next(); " +
-                                              "iterator is after end of list.");
+                throw new NoSuchElementException("Illegal call to next(); "
+                    + "iterator is after end of list.");
             }
         }
-        
-        
-        
+
     }
 
     // Fields
     private Node<E> firstNode;
     private int size;
+
 
     /**
      * Creates a new LinkedList object
@@ -145,6 +154,7 @@ public class LinkedList<E> implements Iterable<E>{
         size = 0;
     }
 
+
     /**
      * Gets the number of elements in the list
      *
@@ -153,6 +163,7 @@ public class LinkedList<E> implements Iterable<E>{
     public int size() {
         return size;
     }
+
 
     /**
      * Adds the object to the end of the list.
@@ -186,6 +197,7 @@ public class LinkedList<E> implements Iterable<E>{
         size++;
     }
 
+
     /**
      * Checks if the array is empty
      *
@@ -194,6 +206,7 @@ public class LinkedList<E> implements Iterable<E>{
     public boolean isEmpty() {
         return (size == 0);
     }
+
 
     /**
      * Removes the first instance of the given object from the list
@@ -226,6 +239,7 @@ public class LinkedList<E> implements Iterable<E>{
         return false;
     }
 
+
     /**
      * Removes the object at the given position
      *
@@ -239,7 +253,7 @@ public class LinkedList<E> implements Iterable<E>{
         // // if the index is invalid
         if (index < 0 || firstNode == null) {
             throw new IndexOutOfBoundsException("Index is out of bounds");
-        } 
+        }
         else {
 
             Node<E> current = firstNode;
@@ -268,6 +282,7 @@ public class LinkedList<E> implements Iterable<E>{
             throw new IndexOutOfBoundsException("Index is out of bounds");
         }
     }
+
 
     /**
      * Gets the object at the given position
@@ -298,6 +313,7 @@ public class LinkedList<E> implements Iterable<E>{
         return data;
     }
 
+
     /**
      * Checks if the list contains the given object
      *
@@ -317,6 +333,7 @@ public class LinkedList<E> implements Iterable<E>{
         return false;
     }
 
+
     /**
      * Removes all of the elements from the list
      */
@@ -327,43 +344,51 @@ public class LinkedList<E> implements Iterable<E>{
             size = 0;
         }
     }
-    
+
+
     /**
      * Creates and returns an LLIterator object
-     * 
+     *
      * @return the LLIterator object
      */
     public Iterator<E> iterator() {
         return new LLIterator<E>();
     }
-    
+
+
     /**
      * returns next node
+     *
      * @return next node
      */
     public Node<E> nextNode() {
         return firstNode.next();
     }
-    
+
+
     /**
      * returns this node
+     *
      * @return this node
      */
     public Node<E> thisNode() {
         return firstNode;
     }
-    
+
+
     /**
      * Swaps two nodes
-     * @param newNode node to swap
+     *
+     * @param newNode
+     *            node to swap
      */
     public void swap(Node<E> fNode, Node<E> newNode) {
         Node<E> temp = new Node<E>(fNode.data());
         fNode.setData(newNode.data());
         newNode.setData(temp.data());
-        
+
     }
-    
+
     /**
      * Gets Node at index
      * @param index index of node
@@ -374,10 +399,10 @@ public class LinkedList<E> implements Iterable<E>{
         for (int i = 0; i < index; i++) {
             returnNode = firstNode.next();
         }
-        
+
         return returnNode;
     }
-    
+
     /**
      * Returns array of list
      * @return
