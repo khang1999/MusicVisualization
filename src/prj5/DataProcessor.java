@@ -7,7 +7,9 @@
 package prj5;
 
 import CS2114.Window;
+import java.util.Comparator;
 import java.util.Scanner;
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -217,4 +219,36 @@ public class DataProcessor {
         }
     }
     
+    /**
+     * swaps in array
+     * @param a list
+     * @param i first value
+     * @param j second value
+     */
+    private static void swap(Object[] a, int i, int j) {
+        Object swap = a[i];
+        a[i] = a[j];
+        a[j] = swap;
+    }
+    
+    /**
+     * Sorts based on comparator
+     * @param c comparator
+     * @return array list of songs
+     */
+    public Song[] sort(Comparator<Song> c) {
+        Song[] s = (Song[])songs.toArray();
+        int n = s.length;
+        for (int i = 0; i < n; i++) {
+            for(int j = i; j > 0; j--) {
+                if (c.compare(s[j], s[j-1]) < 0) {
+                    swap(s, j, j-1);
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        return s;
+    } 
 }

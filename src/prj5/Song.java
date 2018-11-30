@@ -9,6 +9,8 @@
  */
 package prj5;
 
+import java.util.Comparator;
+
 /**
  * Song class for Music Data Visualization
  * @author khang, jasonh44, nathank
@@ -22,6 +24,10 @@ public class Song {
     private int[][] hobbyData;
     private int[][] majorData;
     private int[][] regionData;
+    public static final Comparator<Song> BY_TITLE = new ByTitle();
+    public static final Comparator<Song> BY_ARTIST = new ByArtist();
+    public static final Comparator<Song> BY_GENRE = new ByGenre();
+    public static final Comparator<Song> BY_YEAR = new ByYear();
     
     /**
      * Constructor
@@ -153,6 +159,30 @@ public class Song {
         }
         
         return out.toString();
+    }
+
+    private static class ByTitle implements Comparator<Song> {
+        public int compare(Song v, Song w) {
+            return v.getTitle().compareTo(w.getTitle());
+        }
+    }
+    
+    private static class ByArtist implements Comparator<Song> {
+        public int compare(Song v, Song w) {
+            return v.getArtist().compareTo(w.getArtist());
+        }
+    }
+    
+    private static class ByGenre implements Comparator<Song> {
+        public int compare(Song v, Song w) {
+            return v.getGenre().compareTo(w.getGenre());
+        }
+    }
+    
+    private static class ByYear implements Comparator<Song> {
+        public int compare(Song v, Song w) {
+            return v.getYear() - w.getYear();
+        }
     }
     
 }

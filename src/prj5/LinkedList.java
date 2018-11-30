@@ -364,6 +364,11 @@ public class LinkedList<E> implements Iterable<E>{
         
     }
     
+    /**
+     * Gets Node at index
+     * @param index index of node
+     * @return node
+     */
     public Node<E> getNode(int index) {
         Node<E> returnNode = firstNode;
         for (int i = 0; i < index; i++) {
@@ -371,5 +376,18 @@ public class LinkedList<E> implements Iterable<E>{
         }
         
         return returnNode;
+    }
+    
+    /**
+     * Returns array of list
+     * @return
+     */
+    public Object[] toArray() {
+        Object[] result = new Object[size];
+        int i = 0;
+        for (Node<E> x = firstNode; x != null; x = x.next()) {
+            result[i++] = x.data;
+        }
+        return result;
     }
 }
