@@ -45,6 +45,7 @@ public class DataProcessor {
         loadSongs(musicFile);
         loadSurveys(surveyDataFile);
         
+        calculateVotes();
     }
     
     

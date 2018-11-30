@@ -86,7 +86,7 @@ public class LegendWindow {
         set = 0;
         
         window = new Window();
-        window.setSize(1500, 1000);
+        window.setSize(1200, 600);
         window.setTitle("Project 5");
         
         prevButton = new Button("<-- Prev");
@@ -246,12 +246,12 @@ public class LegendWindow {
          * Center text
          * Y - string.length();
          */
-        switch(represent) {
-            int num = 0;
+        switch (represent) {
+            //int num = 0;
             case "major":
                 for(int i = 0; i < placements.length; i++) {
-                    String song = glyphs[num].getTitle();
-                    title = new TextShape(center(placements[i][0], song.length()), placements[i][1], song, Color.BLACK);
+                    //String song = glyphs[num].getTitle();
+                    //title = new TextShape(center(placements[i][0], song.length()), placements[i][1], song, Color.BLACK);
                         
                 }
                 break;
