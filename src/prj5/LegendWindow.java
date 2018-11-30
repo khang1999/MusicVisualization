@@ -298,7 +298,7 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedNextButton(Button button) {
-
+        
     }
 
 
