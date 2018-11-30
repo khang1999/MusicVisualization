@@ -347,4 +347,11 @@ public class LegendWindow {
     public void clickedQuitButton(Button button) {
         System.exit(0);
     }
+    
+    /**
+     * Gittest
+     */
+    public int gitTest() {
+        return 1;
+    }
 }

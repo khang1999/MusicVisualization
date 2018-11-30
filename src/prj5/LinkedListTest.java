@@ -6,6 +6,7 @@
 // -- Khang Nguyen (khang) Nathan Kim (nathank) Jason Hassold (jasonh44)
 package prj5;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import student.TestCase;
@@ -248,5 +249,13 @@ public class LinkedListTest extends TestCase {
         it.next();
         it.next();
         assertFalse(it.hasNext());
+    }
+    
+    /**
+     * Test array list
+     */
+    public void testToArray() {
+        Object[] origArray = {"soccer", "swimming", "gymnastics"};
+        assertTrue(Arrays.equals(list.toArray(), origArray));
     }
 }
