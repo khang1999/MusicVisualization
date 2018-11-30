@@ -170,7 +170,21 @@ public class LegendWindow {
 
         System.out.print(out.toString());
     }
-
+    
+    /**
+     * Display glyph
+     */
+    public void displayGlyph() {
+        if (represent.equals("hobby")) {
+            
+        }
+        if (represent.equals("major")) {
+            
+        }
+        if (represent.equals("region")) {
+            
+        }
+    }
 
     /**
      * Click button that sorts songs by Artist alphabetically
