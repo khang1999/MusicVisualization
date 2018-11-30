@@ -26,6 +26,8 @@ public class LegendWindow {
     private String represent;
     private Song[] songs;
     private Glyph[] glyphs;
+    //Set number must be first number of set
+    //ex: 0, 9, 18
     private int set;
 
     private Window window;
@@ -53,13 +55,26 @@ public class LegendWindow {
 
     // manually inserting glpyh
     private TextShape cali;
+    private TextShape artist2;
     private Shape blue;
     private Shape green;
     private Shape red;
     private Shape yellow;
     private Shape black;
 
-
+    //Auto glyphs (must be 8 different shapes)
+    private TextShape title;
+    private TextShape artist;
+    private Shape blueLeft;
+    private Shape blueRight;
+    private Shape greenLeft;
+    private Shape greenRight;
+    private Shape redLeft;
+    private Shape redRight;
+    private Shape yellowLeft;
+    private Shape yellowRight;
+    private Shape blackBar;
+    
     // Constructor
     /**
      * Creates a new LegendWindow
@@ -73,59 +88,76 @@ public class LegendWindow {
         window = new Window();
         window.setSize(1500, 1000);
         window.setTitle("Project 5");
+        
         prevButton = new Button("<-- Prev");
         prevButton.onClick(this, "clickedPrevButton");
         window.addButton(prevButton, WindowSide.NORTH);
+        
         sortArtist = new Button("Sort by Artist Name");
         sortArtist.onClick(this, "clickedSortArtist");
         window.addButton(sortArtist, WindowSide.NORTH);
+        
         sortSong = new Button("Sort by Song Title");
         sortSong.onClick(this, "clickedSortSong");
         window.addButton(sortSong, WindowSide.NORTH);
+        
         sortYear = new Button("Sort by Release Year");
         sortYear.onClick(this, "clickedSortYear");
         window.addButton(sortYear, WindowSide.NORTH);
+        
         sortGenre = new Button("Sort by Genre");
         sortGenre.onClick(this, "clickedSortGenre");
         window.addButton(sortGenre, WindowSide.NORTH);
+        
         nextButton = new Button("Next -->");
         nextButton.onClick(this, "clickedNextButton");
         window.addButton(nextButton, WindowSide.NORTH);
+        
         hobbyButton = new Button("Represent Hobby");
         hobbyButton.onClick(this, "clickedHobbyButton");
         window.addButton(hobbyButton, WindowSide.SOUTH);
+        
         majorButton = new Button("Represent Major");
         majorButton.onClick(this, "clickedMajorButton");
         window.addButton(majorButton, WindowSide.SOUTH);
+        
         regionButton = new Button("Represent Region");
         regionButton.onClick(this, "clickedRegionButton");
         window.addButton(regionButton, WindowSide.SOUTH);
+        
         quitButton = new Button("Quit");
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
+        
         hobby = new TextShape(1275, 430, "Hobby Legend", Color.BLACK);
         hobby.setBackgroundColor(Color.WHITE);
         window.addShape(hobby);
+        
         art = new TextShape(1275, 500, "Art", Color.BLACK);
         art.setBackgroundColor(Color.WHITE);
         art.setForegroundColor(Color.BLUE);
         window.addShape(art);
+        
         music = new TextShape(1275, 520, "Music", Color.BLACK);
         music.setBackgroundColor(Color.WHITE);
         music.setForegroundColor(Color.GREEN);
         window.addShape(music);
+        
         read = new TextShape(1275, 540, "Read", Color.BLACK);
         read.setBackgroundColor(Color.WHITE);
         read.setForegroundColor(Color.RED);
         window.addShape(read);
+        
         sports = new TextShape(1275, 560, "Sports", Color.BLACK);
         sports.setBackgroundColor(Color.WHITE);
         sports.setForegroundColor(Color.YELLOW);
         window.addShape(sports);
+        
         songTitle = new TextShape(1275, 600, "Song Title", Color.BLACK);
         songTitle.setBackgroundColor(Color.WHITE);
         songTitle.setForegroundColor(Color.BLACK);
         window.addShape(songTitle);
+        
         heard = new TextShape(1225, 680, "Heard", Color.BLACK);
         heard.setBackgroundColor(Color.WHITE);
         heard.setForegroundColor(Color.BLACK);
@@ -134,26 +166,56 @@ public class LegendWindow {
         likes.setBackgroundColor(Color.WHITE);
         likes.setForegroundColor(Color.BLACK);
         window.addShape(likes);
+        
+        
+        //Sample Glyphs
         line = new Shape(1300, 640, 10, 100, Color.BLACK);
         window.addShape(line);
-        cali = new TextShape(30, 50, "Hotel California by The Eagles",
+        
+        
+        //How you center a text
+        String testTitle = "Hotel California";
+        cali = new TextShape(0, 30, testTitle,
             Color.BLACK);
+        int center = 50 + (150 - cali.getWidth())/2;
+        cali.setX(center);
+        
         cali.setBackgroundColor(Color.WHITE);
         window.addShape(cali);
+        
+        String artistTest = "by The Eagles";
+        artist2 = new TextShape(0, 50, artistTest,
+            Color.BLACK);
+        int center2 = 50 + (150 - artist2.getWidth())/2;
+        artist2.setX(center2);
+        
+        
+        
+        
+        artist2.setBackgroundColor(Color.WHITE);
+        window.addShape(artist2);
+        
         black = new Shape(125, 70, 7, 60, Color.BLACK);
         window.addShape(black);
+        
         blue = new Shape(50, 70, 150, 15, Color.BLUE);
         window.addShape(blue);
+        
         green = new Shape(50, 85, 150, 15, Color.GREEN);
         window.addShape(green);
+        
         red = new Shape(50, 100, 150, 15, Color.RED);
         window.addShape(red);
+        
         yellow = new Shape(50, 115, 150, 15, Color.YELLOW);
         window.addShape(yellow);
-
+        //End Sample Glyph
+        
+        
         inside = new Shape((window.getWidth() - 300), (window.getHeight() / 2
             - 85), 240, 390, Color.WHITE);
         window.addShape(inside);
+        
         outline = new Shape((window.getWidth() - 305), (window.getHeight() / 2
             - 90), 250, 400, Color.BLACK);
         window.addShape(outline);
@@ -177,15 +239,33 @@ public class LegendWindow {
      * Display glyph
      */
     public void displayGlyph() {
-        if (represent.equals("hobby")) {
+        //variables for locations
+        int[][] placements = new int[][] {{50, 30}, {2,4}};
+        
+        /**
+         * Center text
+         * Y - string.length();
+         */
+        switch(represent) {
+            case "major":
+                for(int i = 0; i < placements.length; i++) {
+                    title = new TextShape(center(placements[i][0], glyphs[i].getTitle().length()), placements[i][1], glyphs[i].getTitle(), Color.BLACK);
+                        
+                }
+                break;
+            case "region":
+                break;
+            case "hobby":
+                break;
+            default:
+                break;
             
         }
-        if (represent.equals("major")) {
-            
-        }
-        if (represent.equals("region")) {
-            
-        }
+    }
+    
+    private int center(int num, int length) {
+        int center = num + (150 - length)/2;
+        return center;
     }
 
     /**
@@ -235,6 +315,9 @@ public class LegendWindow {
         update();
     }
     
+    /**
+     * Uploads 9 glyphs from the songs based on the set number
+     */
     public void populateGlyph() {
         for(int i = 0; i < 9; i++) {
             glyphs[i] = new Glyph(songs[set + i]);
