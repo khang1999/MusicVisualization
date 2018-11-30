@@ -247,9 +247,11 @@ public class LegendWindow {
          * Y - string.length();
          */
         switch(represent) {
+            int num = 0;
             case "major":
                 for(int i = 0; i < placements.length; i++) {
-                    title = new TextShape(center(placements[i][0], glyphs[i].getTitle().length()), placements[i][1], glyphs[i].getTitle(), Color.BLACK);
+                    String song = glyphs[num].getTitle();
+                    title = new TextShape(center(placements[i][0], song.length()), placements[i][1], song, Color.BLACK);
                         
                 }
                 break;
