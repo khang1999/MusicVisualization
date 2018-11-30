@@ -29,6 +29,6 @@ public class Input {
         LegendWindow wind = new LegendWindow(args[0], args[1]);
         wind.clickedHobbyButton(new Button());
         //wind.clickedSortSong(new Button());
-        wind.update();
+        wind.update(); //hello
     }
 }
