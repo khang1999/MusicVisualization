@@ -206,8 +206,13 @@ public class LegendWindow {
     public void clickedSortSong(Button button) {
         LinkedList<Song> list = dp.getSongs();
         int index = 0;
+<<<<<<< HEAD
 
         while (dp.getSongs().get(index) != null) {
+=======
+        
+        while (dp.getSongs().get(index + 1) != null) {
+>>>>>>> 74238c2716cd8f2bc9d57f08651f0ba1bcece99d
             String title = list.get(index).getTitle();
 
             int nextIndex = index + 1;
