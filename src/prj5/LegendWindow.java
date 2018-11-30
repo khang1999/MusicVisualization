@@ -24,6 +24,7 @@ public class LegendWindow {
     // fields
     private DataProcessor dp;
     private String represent;
+    private Song[] songs;
 
     private Window window;
     private Button sortArtist;
