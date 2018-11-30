@@ -61,19 +61,7 @@ public class LegendWindow {
     private Shape red;
     private Shape yellow;
     private Shape black;
-
-    //Auto glyphs (must be 8 different shapes)
-    private TextShape title;
-    private TextShape artist;
-    private Shape blueLeft;
-    private Shape blueRight;
-    private Shape greenLeft;
-    private Shape greenRight;
-    private Shape redLeft;
-    private Shape redRight;
-    private Shape yellowLeft;
-    private Shape yellowRight;
-    private Shape blackBar;
+    
     
     // Constructor
     /**
@@ -129,50 +117,60 @@ public class LegendWindow {
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
         
-        hobby = new TextShape(1275, 430, "Hobby Legend", Color.BLACK);
+        hobby = new TextShape((window.getWidth() - 175), (window.getHeight() / 2
+            - 80), "Hobby Legend", Color.BLACK);
         hobby.setBackgroundColor(Color.WHITE);
         window.addShape(hobby);
         
-        art = new TextShape(1275, 500, "Art", Color.BLACK);
+        art = new TextShape((window.getWidth() - 175), (window.getHeight() / 2
+            - 60), "Art", Color.BLACK);
         art.setBackgroundColor(Color.WHITE);
         art.setForegroundColor(Color.BLUE);
         window.addShape(art);
         
-        music = new TextShape(1275, 520, "Music", Color.BLACK);
+        music = new TextShape((window.getWidth() - 175), (window.getHeight() / 2
+            - 40), "Music", Color.BLACK);
         music.setBackgroundColor(Color.WHITE);
         music.setForegroundColor(Color.GREEN);
         window.addShape(music);
         
-        read = new TextShape(1275, 540, "Read", Color.BLACK);
+        read = new TextShape((window.getWidth() - 175), (window.getHeight() / 2
+            - 20), "Read", Color.BLACK);
         read.setBackgroundColor(Color.WHITE);
         read.setForegroundColor(Color.RED);
         window.addShape(read);
         
-        sports = new TextShape(1275, 560, "Sports", Color.BLACK);
+        sports = new TextShape((window.getWidth() - 175), (window.getHeight() / 2
+            - 0), "Sports", Color.BLACK);
         sports.setBackgroundColor(Color.WHITE);
         sports.setForegroundColor(Color.YELLOW);
         window.addShape(sports);
         
-        songTitle = new TextShape(1275, 600, "Song Title", Color.BLACK);
+        songTitle = new TextShape((window.getWidth() - 160), (window.getHeight() / 2
+            + 20), "Song Title", Color.BLACK);
         songTitle.setBackgroundColor(Color.WHITE);
         songTitle.setForegroundColor(Color.BLACK);
         window.addShape(songTitle);
         
-        heard = new TextShape(1225, 680, "Heard", Color.BLACK);
+        heard = new TextShape((window.getWidth() - 175), (window.getHeight() / 2
+            + 60), "Heard", Color.BLACK);
         heard.setBackgroundColor(Color.WHITE);
         heard.setForegroundColor(Color.BLACK);
         window.addShape(heard);
-        likes = new TextShape(1350, 680, "Likes", Color.BLACK);
+        
+        likes = new TextShape((window.getWidth() - 110), (window.getHeight() / 2
+            + 60), "Likes", Color.BLACK);
         likes.setBackgroundColor(Color.WHITE);
         likes.setForegroundColor(Color.BLACK);
         window.addShape(likes);
         
         
-        //Sample Glyphs
-        line = new Shape(1300, 640, 10, 100, Color.BLACK);
+        
+        line = new Shape((window.getWidth() - 125), (window.getHeight() / 2
+            + 50), 10, 40, Color.BLACK);
         window.addShape(line);
         
-        
+        //Sample Glyphs
         //How you center a text
         String testTitle = "Hotel California";
         cali = new TextShape(0, 30, testTitle,
@@ -188,12 +186,10 @@ public class LegendWindow {
             Color.BLACK);
         int center2 = 50 + (150 - artist2.getWidth())/2;
         artist2.setX(center2);
-        
-        
-        
-        
         artist2.setBackgroundColor(Color.WHITE);
         window.addShape(artist2);
+        
+        
         
         black = new Shape(125, 70, 7, 60, Color.BLACK);
         window.addShape(black);
@@ -212,12 +208,12 @@ public class LegendWindow {
         //End Sample Glyph
         
         
-        inside = new Shape((window.getWidth() - 300), (window.getHeight() / 2
-            - 85), 240, 390, Color.WHITE);
+        inside = new Shape((window.getWidth() - 180), (window.getHeight() / 2
+            - 85), 120, 200, Color.WHITE);
         window.addShape(inside);
         
-        outline = new Shape((window.getWidth() - 305), (window.getHeight() / 2
-            - 90), 250, 400, Color.BLACK);
+        outline = new Shape((window.getWidth() - 185), (window.getHeight() / 2
+            - 90), 130, 210, Color.BLACK);
         window.addShape(outline);
     }
 
@@ -231,7 +227,7 @@ public class LegendWindow {
         for (Song song : dp.getSongs()) {
             out.append(song.toString(represent) + "\n");
         }
-
+        this.populateGlyph();
         System.out.print(out.toString());
     }
     
@@ -241,23 +237,330 @@ public class LegendWindow {
     public void displayGlyph() {
         //variables for locations
         int[][] placements = new int[][] {{50, 30}, {2,4}};
-        
+        int num = 0;
         /**
          * Center text
          * Y - string.length();
          */
         switch (represent) {
-            
             case "major":
+                num = 0;
                 for(int i = 0; i < placements.length; i++) {
-                    //String song = glyphs[num].getTitle();
-                    //title = new TextShape(center(placements[i][0], song.length()), placements[i][1], song, Color.BLACK);
-                        
+                    //Makes titles
+                    String song = glyphs[num].getTitle();
+                    int initialX = placements[i][0];
+                    int initialY = placements[i][1];
+                    
+                    TextShape title = new TextShape(0, initialY, song, Color.BLACK);
+                    int centerSong = center(initialX, song.length());
+                    title.setX(centerSong);
+                    title.setBackgroundColor(Color.WHITE);
+                    window.addShape(title);
+                    
+                    //Makes Artists
+                    String a = glyphs[num].getAuthor();
+                    TextShape artist = new TextShape(0, initialY + 20, a, Color.BLACK);
+                    int centerArtist = center(initialX, a.length());
+                    artist.setX(centerArtist);
+                    artist.setBackgroundColor(Color.WHITE);
+                    window.addShape(artist);
+                    
+                    int blackX = initialX + 75;
+                    int blackY = initialY + 40;
+                    Shape blackBar = new Shape(blackX, blackY, 7, 60, Color.BLACK);
+                    window.addShape(blackBar);
+                    
+                    //Sets default length of bar to 100
+                    int lengthOfBar = 100;
+                    
+                    
+                    //Creates left side of blue
+                    int blueLWidth = (int)(lengthOfBar * glyphs[num].getMajor()[0]);
+                    int blueLX = blackX - blueLWidth;
+                    int blueLY = initialY + 40;
+                    Shape blueLeft = new Shape(blueLX, blueLY, blueLWidth, 15, Color.blue);
+                    window.addShape(blueLeft);
+                    
+                    //Creates right side of blue
+                    int blueRWidth = (int)(lengthOfBar * glyphs[num].getMajor()[1]);
+                    int blueRX = blackX + 7;
+                    int blueRY = initialY + 40;
+                    Shape blueRight = new Shape(blueRX, blueRY, blueRWidth, 15, Color.blue);
+                    window.addShape(blueRight);
+                    
+                    
+
+                    //Creates left side of green
+                    int greenLWidth = (int)(lengthOfBar * glyphs[num].getMajor()[2]);
+                    int greenLX = blackX - greenLWidth;
+                    int greenLY = initialY + 55;
+                    Shape greenLeft = new Shape(greenLX, greenLY, greenLWidth, 15, Color.GREEN);
+                    window.addShape(greenLeft);
+                    
+                    //Creates right side of green
+                    int greenRWidth = (int)(lengthOfBar * glyphs[num].getMajor()[3]);
+                    int greenRX = blackX + 7;
+                    int greenRY = initialY + 55;
+                    Shape greenRight = new Shape(greenRX, greenRY, greenRWidth, 15, Color.green);
+                    window.addShape(greenRight);
+                    
+                    
+
+                    //Creates left side of red
+                    int redLWidth = (int)(lengthOfBar * glyphs[num].getMajor()[4]);
+                    int redLX = blackX - redLWidth;
+                    int redLY = initialY + 70;
+                    Shape redLeft = new Shape(redLX, redLY, redLWidth, 15, Color.red);
+                    window.addShape(redLeft);
+                    
+                    //Creates right side of red
+                    int redRWidth = (int)(lengthOfBar * glyphs[num].getMajor()[5]);
+                    int redRX = blackX + 7;
+                    int redRY = initialY + 70;
+                    Shape redRight = new Shape(redRX, redRY, redRWidth, 15, Color.red);
+                    window.addShape(redRight);
+                    
+
+                    
+                  //Creates left side of yellow
+                    int yellowLWidth = (int)(lengthOfBar * glyphs[num].getMajor()[6]);
+                    int yellowLX = blackX - yellowLWidth;
+                    int yellowLY = initialY + 85;
+                    Shape yellowLeft = new Shape(yellowLX, yellowLY, yellowLWidth, 15, Color.yellow);
+                    window.addShape(yellowLeft);
+                    
+                    //Creates right side of yellow
+                    int yellowRWidth = (int)(lengthOfBar * glyphs[num].getMajor()[7]);
+                    int yellowRX = blackX + 7;
+                    int yellowRY = initialY + 85;
+                    Shape yellowRight = new Shape(yellowRX, yellowRY, yellowRWidth, 15, Color.yellow);
+                    window.addShape(yellowRight);
+                    
+                    if (num < 9) {
+                        num++;
+                    }
+                    
                 }
                 break;
+                
+            //NEW CASE    
             case "region":
+                num = 0;
+                for(int i = 0; i < placements.length; i++) {
+                    //Makes titles
+                    String song = glyphs[num].getTitle();
+                    int initialX = placements[i][0];
+                    int initialY = placements[i][1];
+                    
+                    TextShape title = new TextShape(0, initialY, song, Color.BLACK);
+                    int centerSong = center(initialX, song.length());
+                    title.setX(centerSong);
+                    title.setBackgroundColor(Color.WHITE);
+                    window.addShape(title);
+                    
+                    //Makes Artists
+                    String a = glyphs[num].getAuthor();
+                    TextShape artist = new TextShape(0, initialY + 20, a, Color.BLACK);
+                    int centerArtist = center(initialX, a.length());
+                    artist.setX(centerArtist);
+                    artist.setBackgroundColor(Color.WHITE);
+                    window.addShape(artist);
+                    
+                    int blackX = initialX + 75;
+                    int blackY = initialY + 40;
+                    Shape blackBar = new Shape(blackX, blackY, 7, 60, Color.BLACK);
+                    window.addShape(blackBar);
+                    
+                    //Sets default length of bar to 100
+                    int lengthOfBar = 100;
+                    
+                    
+                    
+                    
+                    
+                    //Creates left side of blue
+                    int blueLWidth = (int)(lengthOfBar * glyphs[num].getRegion()[0]);
+                    int blueLX = blackX - blueLWidth;
+                    int blueLY = initialY + 40;
+                    Shape blueLeft = new Shape(blueLX, blueLY, blueLWidth, 15, Color.blue);
+                    window.addShape(blueLeft);
+                    
+                    //Creates right side of blue
+                    int blueRWidth = (int)(lengthOfBar * glyphs[num].getRegion()[1]);
+                    int blueRX = blackX + 7;
+                    int blueRY = initialY + 40;
+                    Shape blueRight = new Shape(blueRX, blueRY, blueRWidth, 15, Color.blue);
+                    window.addShape(blueRight);
+                    
+                    
+                    
+                    
+                    
+                    //Creates left side of green
+                    int greenLWidth = (int)(lengthOfBar * glyphs[num].getRegion()[2]);
+                    int greenLX = blackX - greenLWidth;
+                    int greenLY = initialY + 55;
+                    Shape greenLeft = new Shape(greenLX, greenLY, greenLWidth, 15, Color.GREEN);
+                    window.addShape(greenLeft);
+                    
+                    //Creates right side of green
+                    int greenRWidth = (int)(lengthOfBar * glyphs[num].getRegion()[3]);
+                    int greenRX = blackX + 7;
+                    int greenRY = initialY + 55;
+                    Shape greenRight = new Shape(greenRX, greenRY, greenRWidth, 15, Color.green);
+                    window.addShape(greenRight);
+                    
+                    
+                    
+                    
+                    
+                    //Creates left side of red
+                    int redLWidth = (int)(lengthOfBar * glyphs[num].getRegion()[4]);
+                    int redLX = blackX - redLWidth;
+                    int redLY = initialY + 70;
+                    Shape redLeft = new Shape(redLX, redLY, redLWidth, 15, Color.red);
+                    window.addShape(redLeft);
+                    
+                    //Creates right side of red
+                    int redRWidth = (int)(lengthOfBar * glyphs[num].getRegion()[5]);
+                    int redRX = blackX + 7;
+                    int redRY = initialY + 70;
+                    Shape redRight = new Shape(redRX, redRY, redRWidth, 15, Color.red);
+                    window.addShape(redRight);
+                    
+                    
+                    
+                    
+                    
+                  //Creates left side of yellow
+                    int yellowLWidth = (int)(lengthOfBar * glyphs[num].getRegion()[6]);
+                    int yellowLX = blackX - yellowLWidth;
+                    int yellowLY = initialY + 85;
+                    Shape yellowLeft = new Shape(yellowLX, yellowLY, yellowLWidth, 15, Color.yellow);
+                    window.addShape(yellowLeft);
+                    
+                    //Creates right side of yellow
+                    int yellowRWidth = (int)(lengthOfBar * glyphs[num].getRegion()[7]);
+                    int yellowRX = blackX + 7;
+                    int yellowRY = initialY + 85;
+                    Shape yellowRight = new Shape(yellowRX, yellowRY, yellowRWidth, 15, Color.yellow);
+                    window.addShape(yellowRight);
+                    
+                    if (num < 9) {
+                        num++;
+                    }
+                    
+                }
                 break;
+                
+            //NEW CASE
             case "hobby":
+                num = 0;
+                for(int i = 0; i < placements.length; i++) {
+                    //Makes titles
+                    String song = glyphs[num].getTitle();
+                    int initialX = placements[i][0];
+                    int initialY = placements[i][1];
+                    
+                    TextShape title = new TextShape(0, initialY, song, Color.BLACK);
+                    int centerSong = center(initialX, song.length());
+                    title.setX(centerSong);
+                    title.setBackgroundColor(Color.WHITE);
+                    window.addShape(title);
+                    
+                    //Makes Artists
+                    String a = glyphs[num].getAuthor();
+                    TextShape artist = new TextShape(0, initialY + 20, a, Color.BLACK);
+                    int centerArtist = center(initialX, a.length());
+                    artist.setX(centerArtist);
+                    artist.setBackgroundColor(Color.WHITE);
+                    window.addShape(artist);
+                    
+                    int blackX = initialX + 75;
+                    int blackY = initialY + 40;
+                    Shape blackBar = new Shape(blackX, blackY, 7, 60, Color.BLACK);
+                    window.addShape(blackBar);
+                    
+                    //Sets default length of bar to 100
+                    int lengthOfBar = 100;
+                    
+                    
+                    
+                    
+                    
+                    //Creates left side of blue
+                    int blueLWidth = (int)(lengthOfBar * glyphs[num].getHobby()[0]);
+                    int blueLX = blackX - blueLWidth;
+                    int blueLY = initialY + 40;
+                    Shape blueLeft = new Shape(blueLX, blueLY, blueLWidth, 15, Color.blue);
+                    window.addShape(blueLeft);
+                    
+                    //Creates right side of blue
+                    int blueRWidth = (int)(lengthOfBar * glyphs[num].getHobby()[1]);
+                    int blueRX = blackX + 7;
+                    int blueRY = initialY + 40;
+                    Shape blueRight = new Shape(blueRX, blueRY, blueRWidth, 15, Color.blue);
+                    window.addShape(blueRight);
+                    
+                    
+                    
+                    
+                    
+                    //Creates left side of green
+                    int greenLWidth = (int)(lengthOfBar * glyphs[num].getHobby()[2]);
+                    int greenLX = blackX - greenLWidth;
+                    int greenLY = initialY + 55;
+                    Shape greenLeft = new Shape(greenLX, greenLY, greenLWidth, 15, Color.GREEN);
+                    window.addShape(greenLeft);
+                    
+                    //Creates right side of green
+                    int greenRWidth = (int)(lengthOfBar * glyphs[num].getHobby()[3]);
+                    int greenRX = blackX + 7;
+                    int greenRY = initialY + 55;
+                    Shape greenRight = new Shape(greenRX, greenRY, greenRWidth, 15, Color.green);
+                    window.addShape(greenRight);
+                    
+                    
+                    
+                    
+                    
+                    //Creates left side of red
+                    int redLWidth = (int)(lengthOfBar * glyphs[num].getHobby()[4]);
+                    int redLX = blackX - redLWidth;
+                    int redLY = initialY + 70;
+                    Shape redLeft = new Shape(redLX, redLY, redLWidth, 15, Color.red);
+                    window.addShape(redLeft);
+                    
+                    //Creates right side of red
+                    int redRWidth = (int)(lengthOfBar * glyphs[num].getHobby()[5]);
+                    int redRX = blackX + 7;
+                    int redRY = initialY + 70;
+                    Shape redRight = new Shape(redRX, redRY, redRWidth, 15, Color.red);
+                    window.addShape(redRight);
+                    
+                    
+                    
+                    
+                    
+                  //Creates left side of yellow
+                    int yellowLWidth = (int)(lengthOfBar * glyphs[num].getHobby()[6]);
+                    int yellowLX = blackX - yellowLWidth;
+                    int yellowLY = initialY + 85;
+                    Shape yellowLeft = new Shape(yellowLX, yellowLY, yellowLWidth, 15, Color.yellow);
+                    window.addShape(yellowLeft);
+                    
+                    //Creates right side of yellow
+                    int yellowRWidth = (int)(lengthOfBar * glyphs[num].getHobby()[7]);
+                    int yellowRX = blackX + 7;
+                    int yellowRY = initialY + 85;
+                    Shape yellowRight = new Shape(yellowRX, yellowRY, yellowRWidth, 15, Color.yellow);
+                    window.addShape(yellowRight);
+                    
+                    if (num < 9) {
+                        num++;
+                    }
+                    
+                }
                 break;
             default:
                 break;
@@ -266,6 +569,12 @@ public class LegendWindow {
     
     }
     
+    /**
+     * Private method to center the text
+     * @param num
+     * @param length
+     * @return
+     */
     private int center(int num, int length) {
         int center = num + (150 - length)/2;
         return center;
@@ -325,6 +634,7 @@ public class LegendWindow {
         for(int i = 0; i < 9; i++) {
             glyphs[i] = new Glyph(songs[set + i]);
         }
+        displayGlyph();
     }
 
 
