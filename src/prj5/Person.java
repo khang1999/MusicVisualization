@@ -25,7 +25,9 @@ public class Person {
      * Creates a new Person object
      * 
      * @param id
+     *            ID of person
      * @param date
+     *            Date person submitted
      * @param hobby
      *            Student's hobby (read, art, sports, music)
      * @param major
@@ -62,44 +64,55 @@ public class Person {
         return id;
     }
 
+
     /**
      * Get the date submitted for person
+     * 
      * @return date of person
      */
     public String getDate() {
         return date;
     }
-    
+
+
     /**
      * Get major of person
+     * 
      * @return major of person
      */
     public String getMajor() {
         return major;
     }
-    
+
+
     /**
      * Get region of person
+     * 
      * @return persons region
      */
     public String getRegion() {
         return region;
     }
-    
+
+
     /**
      * Get hobby of person
+     * 
      * @return persons hobby
      */
     public String getHobby() {
         return hobby;
     }
-    
+
+
     /**
      * Get a specific vote for this person
-     * @param index  the index of the vote to get
+     * 
+     * @param index
+     *            the index of the vote to get
      * @return the vote at the index
      * @throws IndexOutOfBoundsException
-     *          if the index is out of range
+     *             if the index is out of range
      */
     public int getVote(int index) {
         if (index >= 0 && index < votes.length) {

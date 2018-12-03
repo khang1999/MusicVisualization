@@ -379,6 +379,8 @@ public class LinkedList<E> implements Iterable<E> {
     /**
      * Swaps two nodes
      *
+     * @param fNode
+     *            Node
      * @param newNode
      *            node to swap
      */
@@ -389,9 +391,12 @@ public class LinkedList<E> implements Iterable<E> {
 
     }
 
+
     /**
      * Gets Node at index
-     * @param index index of node
+     * 
+     * @param index
+     *            index of node
      * @return node
      */
     public Node<E> getNode(int index) {
@@ -403,9 +408,11 @@ public class LinkedList<E> implements Iterable<E> {
         return returnNode;
     }
 
+
     /**
      * Returns array of list
-     * @return
+     * 
+     * @return List in form of array
      */
     public Object[] toArray() {
         Object[] result = new Object[size];

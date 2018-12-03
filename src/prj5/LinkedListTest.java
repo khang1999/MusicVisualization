@@ -13,6 +13,7 @@ import student.TestCase;
 
 /**
  * Test Class for LinkedList
+ * 
  * @author khang, nathank, jasonh44
  * @version 12.11.2018
  */
@@ -20,26 +21,29 @@ public class LinkedListTest extends TestCase {
     // Fields
     private LinkedList<String> empty;
     private LinkedList<String> list;
-    
+
+
     /**
      * Constructor
      */
     public LinkedListTest() {
         // This was left blank intentionally
     }
-    
+
+
     /**
      * Set up
      */
     public void setUp() {
         empty = new LinkedList<String>();
         list = new LinkedList<String>();
-        
+
         list.add("soccer");
         list.add("swimming");
         list.add("gymnastics");
     }
-    
+
+
     /**
      * Test for add(obj) method illegal argument exception
      */
@@ -53,48 +57,52 @@ public class LinkedListTest extends TestCase {
         catch (Exception e) {
             exception = e;
         }
-        
-        assertTrue("add(obj) is throwing the wrong exception when null", 
+
+        assertTrue("add(obj) is throwing the wrong exception when null",
             exception instanceof IllegalArgumentException);
     }
-    
+
+
     /**
      * Test for add(obj) method
      */
     public void testAdd() {
         list.add("test");
-        
+
         assertEquals("test", list.get(3));
     }
-    
+
+
     /**
      * Test for isEmpty() method
      */
     public void testIsEmpty() {
         assertTrue(empty.isEmpty());
-        
+
         assertFalse(list.isEmpty());
     }
-    
+
+
     /**
      * Test for remove(obj) method
      */
     public void testRemoveObj() {
         assertFalse(empty.remove("test"));
-        
+
         assertFalse(list.remove("test"));
         assertEquals(3, list.size());
-        
+
         assertTrue(list.remove("soccer"));
         assertEquals(2, list.size());
-        
+
         assertTrue(list.remove("swimming"));
         assertEquals(1, list.size());
-        
+
         assertTrue(list.remove("gymnastics"));
         assertEquals(0, list.size());
     }
-    
+
+
     /**
      * Test for remove(index) method out of bounds exception
      */
@@ -108,10 +116,10 @@ public class LinkedListTest extends TestCase {
         catch (Exception e) {
             exception = e;
         }
-        
-        assertTrue("remove(index) is throwing the wrong expection for -1", 
+
+        assertTrue("remove(index) is throwing the wrong expection for -1",
             exception instanceof IndexOutOfBoundsException);
-        
+
         try {
             list.remove(3);
             fail("remove(index) isn't throwing an index out of bounds error "
@@ -120,11 +128,10 @@ public class LinkedListTest extends TestCase {
         catch (Exception e) {
             exception = e;
         }
-        
+
         assertTrue("remove(index) is throwing the wrong expection "
-                    + "for the size", 
-                    exception instanceof IndexOutOfBoundsException);
-        
+            + "for the size", exception instanceof IndexOutOfBoundsException);
+
         try {
             empty.remove(0);
             fail("remove(index) isn't throwing an index out of bounds error "
@@ -133,11 +140,12 @@ public class LinkedListTest extends TestCase {
         catch (Exception e) {
             exception = e;
         }
-        
-        assertTrue("remove(index) is throwing the wrong expection for empty", 
-                    exception instanceof IndexOutOfBoundsException);
+
+        assertTrue("remove(index) is throwing the wrong expection for empty",
+            exception instanceof IndexOutOfBoundsException);
     }
-    
+
+
     /**
      * Test for remove(index) method
      */
@@ -146,15 +154,16 @@ public class LinkedListTest extends TestCase {
         assertEquals(2, list.size());
         assertEquals("soccer", list.get(0));
         assertEquals("gymnastics", list.get(1));
-        
+
         assertTrue(list.remove(0));
         assertEquals(1, list.size());
         assertEquals("gymnastics", list.get(0));
-        
+
         assertTrue(list.remove(0));
         assertEquals(0, list.size());
     }
-    
+
+
     /**
      * Test for get() method out of bounds exception
      */
@@ -168,10 +177,10 @@ public class LinkedListTest extends TestCase {
         catch (Exception e) {
             exception = e;
         }
-        
-        assertTrue("get(index) is throwing the wrong expection for -1", 
+
+        assertTrue("get(index) is throwing the wrong expection for -1",
             exception instanceof IndexOutOfBoundsException);
-        
+
         try {
             list.get(3);
             fail("get(index) isn't throwing an index out of bounds error "
@@ -180,51 +189,54 @@ public class LinkedListTest extends TestCase {
         catch (Exception e) {
             exception = e;
         }
-        
+
         assertTrue("get(index) is throwing the wrong expection "
-                    + "for the size", 
-                    exception instanceof IndexOutOfBoundsException);
+            + "for the size", exception instanceof IndexOutOfBoundsException);
     }
-    
+
+
     /**
-     * Test for get() method 
+     * Test for get() method
      */
     public void testGet() {
         assertEquals("soccer", list.get(0));
-        
+
         assertEquals("swimming", list.get(1));
-        
+
         assertEquals("gymnastics", list.get(2));
     }
-    
+
+
     /**
      * Test for contains() method
      */
     public void testContains() {
         assertFalse(list.contains("test"));
-        
+
         assertTrue(list.contains("gymnastics"));
     }
-    
+
+
     /**
      * Test for clear() method
      */
     public void testClear() {
         list.clear();
-        
+
         assertEquals(0, list.size());
     }
-    
+
+
     /**
      * Test for iterator method next()
      */
     public void testIteratorNext() {
         Iterator<String> it = list.iterator();
         assertEquals("soccer", it.next());
-        
+
         it.next();
         it.next();
-        
+
         Exception exception = null;
         try {
             it.next();
@@ -233,16 +245,17 @@ public class LinkedListTest extends TestCase {
         catch (Exception e) {
             exception = e;
         }
-        assertTrue("iterator next() did not throw the right exception", 
+        assertTrue("iterator next() did not throw the right exception",
             exception instanceof NoSuchElementException);
     }
-    
+
+
     /**
      * Test for iterator method hasNext()
      */
     public void testIteratorHasNext() {
         assertFalse(empty.iterator().hasNext());
-        
+
         Iterator<String> it = list.iterator();
         assertTrue(it.hasNext());
         it.next();
@@ -250,12 +263,13 @@ public class LinkedListTest extends TestCase {
         it.next();
         assertFalse(it.hasNext());
     }
-    
+
+
     /**
      * Test array list
      */
     public void testToArray() {
-        Object[] origArray = {"soccer", "swimming", "gymnastics"};
+        Object[] origArray = { "soccer", "swimming", "gymnastics" };
         assertTrue(Arrays.equals(list.toArray(), origArray));
     }
 }
