@@ -94,12 +94,19 @@ public class SongTest extends TestCase {
      * Test toString
      */
     public void testToString() {
-        song.setHobbyData(new int[][] { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 }, {
-            9, 10, 11 } });
+        song.setHobbyData(new int[][] { { 0, 1, 2 }, { 3, 4, 5 }, 
+            { 6, 7, 8 }, {9, 10, 11 } });
 
         assertEquals("Song Title: Hello\nSong Artist: Khang\nSong Genre: Sad\n"
             + "Song Year: 1980\nHeard\nreading:6 art:0 sports:9 music:3\n"
             + "Likes\nreading:7 art:1 sports:10 music:4\n", song.toString(
                 "hobby"));
+    }
+    
+    /**
+     * Test compare title
+     */
+    public void testCompare() {
+        
     }
 }

@@ -6,10 +6,9 @@
 // -- Khang Nguyen (khang) Nathan Kim (nathank) Jason Hassold (jasonh44)
 package prj5;
 
-import CS2114.Window;
-import java.util.*;
+import java.util.Comparator;
+import java.util.Scanner;
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  * DataProcessor class loads in the data
@@ -22,7 +21,6 @@ public class DataProcessor {
     // Fields
     private LinkedList<Person> people;
     private LinkedList<Song> songs;
-    private LinkedList<Glyph> glyphs;
 
 
     /**
@@ -38,7 +36,6 @@ public class DataProcessor {
         // Initialize fields
         people = new LinkedList<Person>();
         songs = new LinkedList<Song>();
-        glyphs = new LinkedList<Glyph>();
 
         // Load in data
         loadSongs(musicFile);
@@ -247,10 +244,7 @@ public class DataProcessor {
      * @return array list of songs
      */
     public Song[] sort(Comparator<Song> c) {
-        
-        Object[] objArr = songs.toArray();
-        Song[] s = Arrays.copyOf(objArr, objArr.length, Song[].class);
-        
+        Song[] s = (Song[])songs.toArray();
         int n = s.length;
         for (int i = 0; i < n; i++) {
             for (int j = i; j > 0; j--) {

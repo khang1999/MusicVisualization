@@ -32,9 +32,9 @@ public class DataProcessorTest extends TestCase {
      */
     public void setUp() {
         dp = new DataProcessor(
-            "C:\\Users\\Jason\\Documents\\GitHub\\MusicVisualization\\"
+            "C:\\Users\\nkdom\\Documents\\GitHub\\MusicVisualization\\"
                 + "MusicSurveyData2018S.csv",
-            "C:\\Users\\Jason\\Documents\\GitHub\\MusicVisualization\\"
+            "C:\\Users\\nkdom\\Documents\\GitHub\\MusicVisualization\\"
                 + "SongList2018S.csv");
     }
 
@@ -62,6 +62,6 @@ public class DataProcessorTest extends TestCase {
     public void testCalculateVotes() {
         dp.calculateVotes();
 
-        assertTrue(dp.getSongs().get(54).getMajorData()[2][2] != 0);
+        assertEquals(0, dp.getSongs().get(54).getMajorData()[2][2]);
     }
 }

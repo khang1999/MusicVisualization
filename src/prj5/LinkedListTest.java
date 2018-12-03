@@ -104,6 +104,14 @@ public class LinkedListTest extends TestCase {
 
 
     /**
+     * Test for remove(obj) method
+     */
+    public void testRemoveObj2() {
+        assertTrue(list.remove("swimming"));
+    }
+
+
+    /**
      * Test for remove(index) method out of bounds exception
      */
     public void testRemoveIndexOutOfBounds() {
@@ -271,5 +279,12 @@ public class LinkedListTest extends TestCase {
     public void testToArray() {
         Object[] origArray = { "soccer", "swimming", "gymnastics" };
         assertTrue(Arrays.equals(list.toArray(), origArray));
+    }
+    
+    /**
+     * Test nextNode
+     */
+    public void testNextNode() {
+        
     }
 }

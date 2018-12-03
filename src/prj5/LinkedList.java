@@ -339,7 +339,7 @@ public class LinkedList<E> implements Iterable<E> {
      */
     public void clear() {
         // make sure we don't call clear on an empty list
-        if (firstNode != null) {
+        while (firstNode != null) {
             firstNode = null;
             size = 0;
         }

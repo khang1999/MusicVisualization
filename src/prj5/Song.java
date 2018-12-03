@@ -61,12 +61,12 @@ public class Song {
         genre = g;
         year = y;
 
-        hobbyData = new int[][] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0,
-            0 } };
-        majorData = new int[][] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0,
-            0 } };
-        regionData = new int[][] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0,
-            0, 0 } };
+        hobbyData = new int[][] { { 0, 0, 0 }, { 0, 0, 0 }, 
+            { 0, 0, 0 }, { 0, 0, 0 } };
+        majorData = new int[][] { { 0, 0, 0 }, { 0, 0, 0 }, 
+            { 0, 0, 0 }, { 0, 0, 0 } };
+        regionData = new int[][] { { 0, 0, 0 }, { 0, 0, 0 }, 
+            { 0, 0, 0 }, { 0, 0, 0 } };
     }
 
 
