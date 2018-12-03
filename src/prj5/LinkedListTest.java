@@ -280,11 +280,34 @@ public class LinkedListTest extends TestCase {
         Object[] origArray = { "soccer", "swimming", "gymnastics" };
         assertTrue(Arrays.equals(list.toArray(), origArray));
     }
-    
+
+
     /**
      * Test nextNode
      */
     public void testNextNode() {
-        
+        assertTrue(empty.isEmpty());
+        empty.add("blah");
+        assertNull(empty.nextNode());
+        empty.add("goo");
+        assertNotNull(empty.nextNode());
+    }
+
+
+    /**
+     * Test thisNode
+     */
+    public void testThisNode() {
+        assertNull(empty.thisNode());
+        empty.add("blah");
+        assertNotNull(empty.thisNode());
+    }
+
+
+    /**
+     * Test getNode
+     */
+    public void testGetNode() {
+        assertNotNull(list.getNode(0));
     }
 }
