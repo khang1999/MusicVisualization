@@ -472,4 +472,28 @@ public class DisplayWindow {
     public void clickedQuitButton(Button button) {
         System.exit(0);
     }
+    
+    /**
+     * return glyph
+     * @return glyph
+     */
+    public Glyph[] getGlyph() {
+        return glyphs;
+    }
+    
+    /**
+     * returns set
+     * @return set
+     */
+    public int getSet() {
+        return set;
+    }
+    
+    /**
+     * returns represent
+     * @return represent
+     */
+    public String getRepresent() {
+        return represent;
+    }
 }

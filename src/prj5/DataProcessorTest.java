@@ -31,11 +31,7 @@ public class DataProcessorTest extends TestCase {
      * Set up
      */
     public void setUp() {
-        dp = new DataProcessor(
-            "C:\\Users\\nkdom\\Documents\\GitHub\\MusicVisualization\\"
-                + "MusicSurveyData2018S.csv",
-            "C:\\Users\\nkdom\\Documents\\GitHub\\MusicVisualization\\"
-                + "SongList2018S.csv");
+        dp = new DataProcessor("MusicSurveyData2018S.csv", "SongList2018S.csv");
     }
 
 
@@ -62,6 +58,8 @@ public class DataProcessorTest extends TestCase {
     public void testCalculateVotes() {
         dp.calculateVotes();
 
-        assertEquals(0, dp.getSongs().get(54).getMajorData()[2][2]);
+        assertEquals(218, dp.getSongs().get(54).getMajorData()[2][2]);
+        
+        assertEquals("AC/DC", dp.sort(Song.BY_ARTIST)[0].getArtist());
     }
 }

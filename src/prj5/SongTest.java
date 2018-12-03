@@ -119,6 +119,9 @@ public class SongTest extends TestCase {
             + "Song Year: 1980\nHeard\nreading:6 art:0 sports:9 music:3\n"
             + "Likes\nreading:7 art:1 sports:10 music:4\n", song.toString(
                 "region"));
+        
+        assertEquals("Song Title: Hello\nSong Artist: Khang\nSong Genre: Sad\n"
+            + "Song Year: 1980\n", song.toString("a"));
     }
     
     /**
@@ -128,9 +131,9 @@ public class SongTest extends TestCase {
         Song a = new Song("A", "A", "A", 2000);
         Song b = new Song("B", "C", "D", 2004);
         
-        assertEquals(1, song.BY_TITLE.compare(a, b));
-        assertEquals(2, song.BY_ARTIST.compare(a, b));
-        assertEquals(3, song.BY_GENRE.compare(a, b));
-        assertEquals(4, song.BY_YEAR.compare(a, b));
+        assertEquals(-1, song.BY_TITLE.compare(a, b));
+        assertEquals(-2, song.BY_ARTIST.compare(a, b));
+        assertEquals(-3, song.BY_GENRE.compare(a, b));
+        assertEquals(-4, song.BY_YEAR.compare(a, b));
     }
 }
