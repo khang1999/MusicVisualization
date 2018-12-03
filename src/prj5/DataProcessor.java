@@ -7,8 +7,6 @@
 package prj5;
 
 import CS2114.Window;
-import java.util.Comparator;
-import java.util.Scanner;
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -249,7 +247,10 @@ public class DataProcessor {
      * @return array list of songs
      */
     public Song[] sort(Comparator<Song> c) {
-        Song[] s = (Song[])songs.toArray();
+        
+        Object[] objArr = songs.toArray();
+        Song[] s = Arrays.copyOf(objArr, objArr.length, Song[].class);
+        
         int n = s.length;
         for (int i = 0; i < n; i++) {
             for (int j = i; j > 0; j--) {

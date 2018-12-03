@@ -49,8 +49,8 @@ public class Glyph {
         //For loop that goes through each element of bar and fills it up
         for (int i = 0; i < 7; i+=2) {
             //Creates two elements at a time, for each subgroup
-            bars[i] = hobbyData[(int)(i/2)][0] / hobbyData[(int)(i/2)][2];
-            bars[i + 1] = hobbyData[(int)(i/2)][1] / hobbyData[(int)(i/2)][2];
+            bars[i] = (double)hobbyData[i/2][0] / (double)hobbyData[i/2][2];
+            bars[i + 1] = (double)hobbyData[i/2][1] / (double)hobbyData[i/2][2];
         }
         
         return bars;
@@ -67,8 +67,8 @@ public class Glyph {
         //For loop that goes through each element of bar and fills it up
         for (int i = 0; i < 7; i+=2) {
             //Creates two elements at a time, for each subgroup
-            bars[i] = majorData[(int)(i/2)][0] / majorData[(int)(i/2)][2];
-            bars[i + 1] = majorData[(int)(i/2)][1] / majorData[(int)(i/2)][2];
+            bars[i] = (double)majorData[i/2][0] / (double)majorData[i/2][2];
+            bars[i + 1] = (double)majorData[i/2][1] / (double)majorData[i/2][2];
         }
         
         return bars;
@@ -84,8 +84,8 @@ public class Glyph {
         int[][] regionData = song.getRegionData();
         //For loop that goes through each element of bar and fills it up
         for (int i = 0; i < 7; i+=2) {
-            bars[i] = regionData[(int)(i/2)][0] / regionData[(int)(i/2)][2];
-            bars[i + 1] = regionData[(int)(i/2)][1] / regionData[(int)(i/2)][2];
+            bars[i] = (double)regionData[i/2][0] / (double)regionData[i/2][2];
+            bars[i + 1] = (double)regionData[i/2][1] / (double)regionData[i/2][2];
         }
         
         return bars;
