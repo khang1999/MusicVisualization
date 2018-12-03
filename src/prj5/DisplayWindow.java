@@ -8,6 +8,7 @@
 package prj5;
 
 import java.awt.Color;
+import java.util.Arrays;
 import CS2114.Button;
 import CS2114.Shape;
 import CS2114.TextShape;
@@ -60,6 +61,8 @@ public class DisplayWindow {
      */
     public DisplayWindow(String surveyDataFile, String musicFile) {
         dp = new DataProcessor(surveyDataFile, musicFile);
+        Object[] objArr = dp.getSongs().toArray();
+        songs = Arrays.copyOf(objArr, objArr.length, Song[].class);
         glyphs = new Glyph[9];
         
         represent = "";
@@ -433,7 +436,7 @@ public class DisplayWindow {
      * @param button  the button 
      */
     public void clickedNextButton(Button button) {
-        if (set + 9 < songs.length - 9) {
+        if (set + 9 < songs.length) {
             set += 9;
         }
         update();
