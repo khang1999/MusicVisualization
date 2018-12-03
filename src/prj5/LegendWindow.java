@@ -53,7 +53,7 @@ public class LegendWindow {
     private TextShape likes;
     private Shape line;
 
-    // manually inserting glpyh
+    // manually inserting glyph
     private TextShape cali;
     private TextShape artist2;
     private Shape blue;
@@ -73,10 +73,13 @@ public class LegendWindow {
         glyphs = new Glyph[9];
         set = 0;
         
+        // Set up window
         window = new Window();
         window.setSize(1200, 600);
         window.setTitle("Project 5");
         
+        
+        // Set up buttons
         prevButton = new Button("<-- Prev");
         prevButton.onClick(this, "clickedPrevButton");
         window.addButton(prevButton, WindowSide.NORTH);
@@ -117,6 +120,8 @@ public class LegendWindow {
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
         
+        
+        // Set up the legend
         hobby = new TextShape((window.getWidth() - 175), (window.getHeight() / 2
             - 80), "Hobby Legend", Color.BLACK);
         hobby.setBackgroundColor(Color.WHITE);
@@ -164,15 +169,21 @@ public class LegendWindow {
         likes.setForegroundColor(Color.BLACK);
         window.addShape(likes);
         
-        
-        
         line = new Shape((window.getWidth() - 125), (window.getHeight() / 2
             + 50), 10, 40, Color.BLACK);
         window.addShape(line);
         
+        inside = new Shape((window.getWidth() - 180), (window.getHeight() / 2
+            - 85), 120, 200, Color.WHITE);
+        window.addShape(inside);
+        
+        outline = new Shape((window.getWidth() - 185), (window.getHeight() / 2
+            - 90), 130, 210, Color.BLACK);
+        window.addShape(outline);
+        
         //Sample Glyphs
         //How you center a text
-        String testTitle = "Hotel California";
+        /*String testTitle = "Hotel California";
         cali = new TextShape(0, 30, testTitle,
             Color.BLACK);
         int center = 50 + (150 - cali.getWidth())/2;
@@ -204,17 +215,8 @@ public class LegendWindow {
         window.addShape(red);
         
         yellow = new Shape(50, 115, 150, 15, Color.YELLOW);
-        window.addShape(yellow);
+        window.addShape(yellow);*/
         //End Sample Glyph
-        
-        
-        inside = new Shape((window.getWidth() - 180), (window.getHeight() / 2
-            - 85), 120, 200, Color.WHITE);
-        window.addShape(inside);
-        
-        outline = new Shape((window.getWidth() - 185), (window.getHeight() / 2
-            - 90), 130, 210, Color.BLACK);
-        window.addShape(outline);
     }
 
 
@@ -236,7 +238,9 @@ public class LegendWindow {
      */
     public void displayGlyph() {
         //variables for locations
-        int[][] placements = new int[][] {{50, 30}, {2,4}};
+        int[][] placements = new int[][] {{100, 25}, {433, 25}, {766, 25},
+                                          {100, 175}, {433, 175}, {766, 175},
+                                          {100, 325}, {433, 325}, {766, 325}};
         int num = 0;
         /**
          * Center text
@@ -265,6 +269,7 @@ public class LegendWindow {
                     artist.setBackgroundColor(Color.WHITE);
                     window.addShape(artist);
                     
+                    // Black bar
                     int blackX = initialX + 75;
                     int blackY = initialY + 40;
                     Shape blackBar = new Shape(blackX, blackY, 7, 60, Color.BLACK);
@@ -623,8 +628,7 @@ public class LegendWindow {
      *            Button that is clicked
      */
     public void clickedSortYear(Button button) {
-        songs = dp.sort(Song.BY_YEAR);
-        update();
+        
     }
     
     /**
@@ -668,7 +672,7 @@ public class LegendWindow {
      */
     public void clickedHobbyButton(Button button) {
         represent = "hobby";
-        // update();
+        update();
     }
 
 
@@ -680,7 +684,7 @@ public class LegendWindow {
      */
     public void clickedMajorButton(Button button) {
         represent = "major";
-        // update();
+        update();
     }
 
 
@@ -692,7 +696,7 @@ public class LegendWindow {
      */
     public void clickedRegionButton(Button button) {
         represent = "region";
-        // update();
+        update();
     }
 
 
