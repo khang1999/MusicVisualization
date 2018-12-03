@@ -219,6 +219,8 @@ public class Song {
                         + regionData[0][1] + " " + "sports:" + regionData[3][1] 
                         + " music:" + regionData[1][1] + "\n");
                     break;
+                default:
+                    break;
             }
 
             return out.toString();
