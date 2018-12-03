@@ -265,7 +265,7 @@ public class LegendWindow {
 
                     TextShape title = new TextShape(0, initialY, song,
                         Color.BLACK);
-                    int centerSong = center(initialX, song.length());
+                    int centerSong = center(initialX, title.getWidth());
                     title.setX(centerSong);
                     title.setBackgroundColor(Color.WHITE);
                     window.addShape(title);
@@ -274,7 +274,7 @@ public class LegendWindow {
                     String a = glyphs[num].getAuthor();
                     TextShape artist = new TextShape(0, initialY + 20, a,
                         Color.BLACK);
-                    int centerArtist = center(initialX, a.length());
+                    int centerArtist = center(initialX, artist.getWidth());
                     artist.setX(centerArtist);
                     artist.setBackgroundColor(Color.WHITE);
                     window.addShape(artist);
@@ -379,7 +379,7 @@ public class LegendWindow {
 
                     TextShape title = new TextShape(0, initialY, song,
                         Color.BLACK);
-                    int centerSong = center(initialX, song.length());
+                    int centerSong = center(initialX, title.getWidth());
                     title.setX(centerSong);
                     title.setBackgroundColor(Color.WHITE);
                     window.addShape(title);
@@ -388,7 +388,7 @@ public class LegendWindow {
                     String a = glyphs[num].getAuthor();
                     TextShape artist = new TextShape(0, initialY + 20, a,
                         Color.BLACK);
-                    int centerArtist = center(initialX, a.length());
+                    int centerArtist = center(initialX, artist.getWidth());
                     artist.setX(centerArtist);
                     artist.setBackgroundColor(Color.WHITE);
                     window.addShape(artist);
@@ -492,7 +492,7 @@ public class LegendWindow {
 
                     TextShape title = new TextShape(0, initialY, song,
                         Color.BLACK);
-                    int centerSong = center(initialX, song.length());
+                    int centerSong = center(initialX, title.getWidth());
                     title.setX(centerSong);
                     title.setBackgroundColor(Color.WHITE);
                     window.addShape(title);
@@ -501,7 +501,7 @@ public class LegendWindow {
                     String a = glyphs[num].getAuthor();
                     TextShape artist = new TextShape(0, initialY + 20, a,
                         Color.BLACK);
-                    int centerArtist = center(initialX, a.length());
+                    int centerArtist = center(initialX, artist.getWidth());
                     artist.setX(centerArtist);
                     artist.setBackgroundColor(Color.WHITE);
                     window.addShape(artist);

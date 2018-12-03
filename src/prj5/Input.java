@@ -26,9 +26,6 @@ public class Input {
      * Main Method
      */
     public static void main(String[] args) {
-        LegendWindow wind = new LegendWindow(args[0], args[1]);
-        wind.clickedHobbyButton(new Button());
-        //wind.clickedSortSong(new Button());
-        wind.update();
+        DisplayWindow wind = new DisplayWindow(args[0], args[1]);
     }
 }
