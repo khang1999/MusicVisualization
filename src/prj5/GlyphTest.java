@@ -26,7 +26,7 @@ public class GlyphTest extends student.TestCase {
             { 2, 2, 2 } };
         int[][] majorData = new int[][] { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 },
             { 2, 2, 2 } };
-        int[][] regionData = new int[][] { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 },
+        int[][] regionData = new int[][] {{ 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 },
             { 2, 2, 2 } };
         song.setHobbyData(hobbyData);
         song.setMajorData(majorData);

@@ -32,16 +32,6 @@ public class DisplayWindow {
     private int set;
     
     private Window window;
-    private Button sortArtist;
-    private Button sortSong;
-    private Button sortYear;
-    private Button sortGenre;
-    private Button prevButton;
-    private Button nextButton;
-    private Button hobbyButton;
-    private Button majorButton;
-    private Button regionButton;
-    private Button quitButton;
     
     private TextShape key1;
     private TextShape key2;
@@ -74,43 +64,43 @@ public class DisplayWindow {
         window.setTitle("Project 5");
         
         // Set up buttons
-        prevButton = new Button("<-- Prev");
+        Button prevButton = new Button("<-- Prev");
         prevButton.onClick(this, "clickedPrevButton");
         window.addButton(prevButton, WindowSide.NORTH);
         
-        sortArtist = new Button("Sort by Artist Name");
+        Button sortArtist = new Button("Sort by Artist Name");
         sortArtist.onClick(this, "clickedSortArtist");
         window.addButton(sortArtist, WindowSide.NORTH);
         
-        sortSong = new Button("Sort by Song Title");
+        Button sortSong = new Button("Sort by Song Title");
         sortSong.onClick(this, "clickedSortTitle");
         window.addButton(sortSong, WindowSide.NORTH);
         
-        sortYear = new Button("Sort by Release Year");
+        Button sortYear = new Button("Sort by Release Year");
         sortYear.onClick(this, "clickedSortYear");
         window.addButton(sortYear, WindowSide.NORTH);
         
-        sortGenre = new Button("Sort by Genre");
+        Button sortGenre = new Button("Sort by Genre");
         sortGenre.onClick(this, "clickedSortGenre");
         window.addButton(sortGenre, WindowSide.NORTH);
         
-        nextButton = new Button("Next -->");
+        Button nextButton = new Button("Next -->");
         nextButton.onClick(this, "clickedNextButton");
         window.addButton(nextButton, WindowSide.NORTH);
         
-        hobbyButton = new Button("Represent Hobby");
+        Button hobbyButton = new Button("Represent Hobby");
         hobbyButton.onClick(this, "clickedHobbyButton");
         window.addButton(hobbyButton, WindowSide.SOUTH);
         
-        majorButton = new Button("Represent Major");
+        Button majorButton = new Button("Represent Major");
         majorButton.onClick(this, "clickedMajorButton");
         window.addButton(majorButton, WindowSide.SOUTH);
         
-        regionButton = new Button("Represent Region");
+        Button regionButton = new Button("Represent Region");
         regionButton.onClick(this, "clickedRegionButton");
         window.addButton(regionButton, WindowSide.SOUTH);
         
-        quitButton = new Button("Quit");
+        Button quitButton = new Button("Quit");
         quitButton.onClick(this, "clickedQuitButton");
         window.addButton(quitButton, WindowSide.SOUTH);
         
@@ -222,6 +212,8 @@ public class DisplayWindow {
                 key4.setText("Other");
                 legendTitle.setText("Major Legend");
                 break;
+            default:
+                break;
         }
         
         window.addShape(key1);
@@ -240,7 +232,7 @@ public class DisplayWindow {
      */
     public void populateGlyphs() {
         glyphs = new Glyph[9];
-        for(int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             glyphs[i] = new Glyph(songs[set + i]);
         }
         displayGlyphs();
